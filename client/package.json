@@ -1,0 +1,37 @@
+{
+  "name": "user-app-angular-2",
+  "version": "1.0.0",
+  "scripts": {
+    "tsc": "tsc -p src/",
+    "build": "webpack --progress",
+    "build:prod": "webpack -p --progress",
+    "serv": "webpack-dev-server --inline --progress"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.8",
+    "@angular/compiler": "~2.4.8",
+    "@angular/core": "~2.4.8",
+    "@angular/forms": "~2.4.8",
+    "@angular/http": "~2.4.8",
+    "@angular/platform-browser": "~2.4.8",
+    "@angular/platform-browser-dynamic": "~2.4.8",
+    "@angular/router": "~3.4.8",
+    "@angular/upgrade": "~2.4.8",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.2.0",
+    "zone.js": "^0.7.2",
+	"angular2-jwt": "^0.1.28"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/node": "^7.0.5",
+    "angular2-template-loader": "^0.6.2",
+    "html-webpack-plugin": "^2.28.0",
+    "raw-loader": "^0.5.1",
+    "ts-loader": "^2.0.1",
+    "typescript": "^2.0.3",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
