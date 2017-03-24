@@ -1,22 +1,22 @@
 import {Injectable} from "@angular/core";
-import {Http, Headers, Response} from "@angular/http";
+import {Http, Response} from "@angular/http";
 import {Observable} from "rxjs";
 import "rxjs/add/operator/map";
 import {constant} from "../app.constatnts";
+import User from "../news/model/user.model";
 
 @Injectable()
 export class AuthenticationService {
-    public token: string;
-    public username: string = "anon";
-    public authorities: string;
+
+    public user: User = new User("anon", null, null);
+
     private LOGIN_URL: string = constant.LOGIN_URL;
 
     constructor(private http: Http) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
-            this.token = currentUser.token;
-            this.username = currentUser.username;
+            this.user = new User(currentUser.username, currentUser.authoriries, currentUser.token);
         }
     }
 
@@ -27,16 +27,15 @@ export class AuthenticationService {
                 let token = response.headers.get("Authorization").slice(7);
                 let authorities = response.headers.get("Authorities");
                 if (token) {
-                    // set token property
-                    this.token = token;
-                    this.username = username;
-                    this.authorities = authorities;
+                    this.user = new User(username, authorities.split(","), token);
+
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem("currentUser", JSON.stringify({username: username, token: token, authorities: authorities}));
+                    console.log(localStorage.getItem("currentUser"));
                     // return true to indicate successful login
                     return true;
                 } else {
-                    this.username = "anon";
+                    this.user.username = "anon";
                     // return false to indicate failed login
                     return false;
                 }
@@ -45,8 +44,9 @@ export class AuthenticationService {
 
     logout(): void {
         // clear token remove user from local storage to log user out
-        this.token = null;
-        this.username = "anon";
+        this.user.username = "anon";
+        this.user.authorities = null;
+        this.user.token = null;
         localStorage.removeItem("currentUser");
     }
 }

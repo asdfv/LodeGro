@@ -15,7 +15,5 @@ export class RedactorComponent implements OnInit {
         this.newsService.loadRedactor().subscribe(
             (data) => this.redactorText = data
         );
-        console.log(this.redactorText);
     }
-
 }

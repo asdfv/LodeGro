@@ -22,14 +22,14 @@ export default class NewsService {
     };
 
     loadAdmin(): Observable<string> {
-        let headers = new Headers({'Authorization': this.authenticationService.token});
+        let headers = new Headers({'Authorization': this.authenticationService.user.token});
         let options = new RequestOptions({headers: headers});
         return this.http.get(this.adminUrl, options)
             .map((response: Response) => response.text());
     };
 
     loadRedactor(): Observable<string> {
-        let headers = new Headers({'Authorization': this.authenticationService.token});
+        let headers = new Headers({'Authorization': this.authenticationService.user.token});
         let options = new RequestOptions({headers: headers});
         return this.http.get(this.redactorUrl, options)
             .map((response: Response) => response.text());
