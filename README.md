@@ -26,7 +26,7 @@ Build project
 	* In the console, navigate to the folder with the project and run the command `gradle build`
 	* Change in the file **deploy.cmd** variable *tomcat* to Tomcat installation folder.
 	* Run deploy.cmd
-	* Wait for the Tomcat start and go to the URL [http://localhost:8080/userapp/](http://localhost:8080/userapp/)
+	* Wait for the Tomcat start and go to the URL [http://localhost:8080/lodegro/](http://localhost:8080/lodegro/)
 
 
 
@@ -56,4 +56,4 @@ Build project
   * В консоли перейдите в папку с проектом и выполните команду `gradle build`
   * Измените в файле deploy.cmd переменную *tomcat*, на папку, в которую установили Tomcat
   * Запустите deploy.cmd
-  * Дождитесь старта Tomcat и в браузере перейдите по ссылке [http://localhost:8080/userapp/](http://localhost:8080/userapp/)
+  * Дождитесь старта Tomcat и в браузере перейдите по ссылке [http://localhost:8080/lodegro/](http://localhost:8080/lodegro/)
