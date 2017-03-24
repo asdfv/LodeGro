@@ -6,7 +6,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -20,7 +19,7 @@ import java.util.Set;
 /**
  * Service for creating and verification token
  */
-@PropertySource("classpath:security.properties")
+//@PropertySource("classpath:security.properties")
 public class TokenAuthenticationService {
 
     public final static Logger LOGGER = LoggerFactory.getLogger(TokenAuthenticationService.class);
@@ -40,8 +39,6 @@ public class TokenAuthenticationService {
 
     /**
      * Create token and passed it to response header
-     * @param response
-     * @param authentication
      */
     public void addAuthentication(HttpServletResponse response, Authentication authentication) {
 
@@ -57,13 +54,12 @@ public class TokenAuthenticationService {
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
         response.addHeader(TOKEN_HEADER, TOKEN_PREFIX + " " + JWT);
-        response.addHeader(ROLES_HEADER, authorities.toString());
+        response.addHeader(ROLES_HEADER, StringUtils.join(authorities, ','));
         LOGGER.info(username + " successfully login with roles: " + authorities.toString());
     }
 
     /**
      * Decode token with SECRET
-     * @param request
      * @return Authentication
      */
     public Authentication getAuthentication(HttpServletRequest request) {

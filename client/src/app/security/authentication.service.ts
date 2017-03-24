@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import "rxjs/add/operator/map";
 import {constant} from "../app.constatnts";
 import User from "../news/model/user.model";
+import {map} from "../../../node_modules/rxjs/operator/map";
+import {forEach} from "../../../node_modules/@angular/router/src/utils/collection";
 
 @Injectable()
 export class AuthenticationService {
@@ -25,9 +27,14 @@ export class AuthenticationService {
             .map((response: Response) => {
                 // login successful if there"s a jwt token in the response header
                 let token = response.headers.get("Authorization").slice(7);
-                let authorities = response.headers.get("Authorities");
+
+                let stringAuthorities: string = response.headers.get("Authorities");
+                let authorities: string[] = stringAuthorities.split(",");
+
+                authorities.forEach((authority, index, authorities) => console.log(index + " authority: " + authority));
+
                 if (token) {
-                    this.user = new User(username, authorities.split(","), token);
+                    this.user = new User(username, authorities, token);
 
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem("currentUser", JSON.stringify({username: username, token: token, authorities: authorities}));

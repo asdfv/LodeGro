@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
     print(): void {
         this.canViewService.printUser();
+        console.log("this.canViewService.admin(): " + this.canViewService.admin());
     }
 
     ngOnInit(): void {

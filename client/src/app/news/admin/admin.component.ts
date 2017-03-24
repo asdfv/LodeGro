@@ -10,12 +10,10 @@ export class AdminComponent implements OnInit {
 
     private adminText: string;
 
-
     ngOnInit(): void {
         this.newsService.loadAdmin().subscribe(
             (data) => this.adminText = data
         );
-        console.log(this.adminText);
     }
 
 }

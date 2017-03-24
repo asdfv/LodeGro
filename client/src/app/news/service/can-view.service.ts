@@ -11,12 +11,13 @@ export class CanViewService {
         console.log('Current user is: ' + this.authenticationService.user.username);
     }
 
-    //admin(): boolean {
-    //    console.log(this.user.username);
-    //    return this.username == roles.ADMIN;
-    //}
-    //
-    //redactor(): boolean {
+    admin(): boolean {
+       let authorities: string[] = this.authenticationService.user.authorities;
+       console.log("this.authenticationService.user.authorities:" + authorities);
+       return authorities == null ? false : authorities.indexOf(roles.ADMIN) > -1;
+    }
+
+    // redactor(): boolean {
     //    return this.user.username == roles.REDACTOR;
-    //}
+    // }
 }

@@ -1,6 +1,5 @@
 export const roles = {
-    ADMIN: "admin",
-    REDACTOR: "redactor",
-    EDITOR: "editor",
-    USER: "user"
+    ADMIN: "ROLE_ADMIN",
+    REDACTOR: "ROLE_REDACTOR",
+    MAKER: "ROLE_MAKER"
 }
