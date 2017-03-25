@@ -49,7 +49,7 @@ public class User extends AbstractPersistable<Integer> {
      */
     @ManyToMany(targetEntity = Authority.class, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_authority",
+            name = "users_authority",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_id")}
     )
