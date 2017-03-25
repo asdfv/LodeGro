@@ -4,8 +4,6 @@ import {Observable} from "rxjs";
 import "rxjs/add/operator/map";
 import {constant} from "../app.constatnts";
 import User from "../news/model/user.model";
-import {map} from "../../../node_modules/rxjs/operator/map";
-import {forEach} from "../../../node_modules/@angular/router/src/utils/collection";
 
 @Injectable()
 export class AuthenticationService {
@@ -38,7 +36,7 @@ export class AuthenticationService {
 
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem("currentUser", JSON.stringify({username: username, token: token, authorities: authorities}));
-                    console.log(localStorage.getItem("currentUser"));
+                    console.log("Saved to storage: " + localStorage.getItem("currentUser"));
                     // return true to indicate successful login
                     return true;
                 } else {

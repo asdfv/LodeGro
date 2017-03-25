@@ -1,22 +1,22 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {CanViewService} from "./news/service/can-view.service";
 
 @Component({
     selector: "my-app",
     templateUrl: "./app.component.html"
 })
-export class AppComponent implements OnInit{
-    title: string = "Lode News";
-
+export class AppComponent {
     constructor(private canViewService: CanViewService) {
     };
 
-    ngOnInit(): void {
-        this.print();
+    title: string = "Lode News";
+
+    isAdm(): boolean {
+        return this.canViewService.isAdmin();
     }
 
-    print(): void {
-        this.canViewService.printUser();
+    isRed(): boolean {
+        return this.canViewService.isRedactor();
     }
 
 }

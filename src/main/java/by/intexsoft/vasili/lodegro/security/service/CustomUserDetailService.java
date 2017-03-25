@@ -15,8 +15,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomUserDetailService.class);
 
-    final
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     public CustomUserDetailService(UserService userService) {
@@ -25,9 +24,6 @@ public class CustomUserDetailService implements UserDetailsService {
 
     /**
      * @see UserDetailsService
-     * @param username
-     * @return
-     * @throws UsernameNotFoundException
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

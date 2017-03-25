@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import NewsService from "../service/news.service";
-import {CanViewService} from "../service/can-view.service";
 import News from "../model/news.model";
 
 @Component({
@@ -8,18 +7,12 @@ import News from "../model/news.model";
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private newsService: NewsService, private canViewService: CanViewService) {
+    constructor(private newsService: NewsService) {
     };
 
     newsList: News[];
 
-    print(): void {
-        this.canViewService.printUser();
-        console.log("this.canViewService.admin(): " + this.canViewService.admin());
-    }
-
     ngOnInit(): void {
-        this.print();
         this.newsService.loadNews().subscribe(
             (data: News[]) => this.newsList = data
         );

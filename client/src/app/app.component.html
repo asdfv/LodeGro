@@ -1,8 +1,8 @@
 <h1>{{ title }}</h1>
 <nav>
     <a routerLink="/home">Home page</a>
-    <a routerLink="/admin">Admin page</a>
-    <a routerLink="/redactor">Redactor page</a>
+    <a routerLink="/admin" *ngIf="isAdm()">Admin page</a>
+    <a routerLink="/redactor" *ngIf="isRed() || isAdm()" >Redactor page</a>
     <a routerLink="/login">LogIn/LogOut</a>
 </nav>
 <router-outlet></router-outlet>

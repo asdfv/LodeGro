@@ -9,14 +9,15 @@ export class AuthenticationGuard implements CanActivate {
     }
 
     canActivate() {
-        if (localStorage.getItem('currentUser')) {
-            // logged in so return true
-            return true;
-        }
-
-        // not logged in so redirect to login page
-        this.router.navigate([constant.LOGIN_URL]);
-        return false;
+        return true;
+        // if (localStorage.getItem('currentUser')) {
+        //     // logged in so return true
+        //     return true;
+        // }
+        //
+        // // not logged in so redirect to login page
+        // this.router.navigate([constant.LOGIN_URL]);
+        // return false;
     }
 
 }
