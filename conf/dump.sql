@@ -38,20 +38,20 @@ INSERT INTO users (id, username, password, enabled) VALUES (2, 'red', 'a', '1');
 
 -- user_authority
 
-CREATE TABLE user_authority (
+CREATE TABLE users_authority (
     user_id integer NOT NULL,
     authority_id integer NOT NULL
 );
 
-ALTER TABLE user_authority
-    ADD CONSTRAINT fk_user_authority_authority FOREIGN KEY (authority_id) REFERENCES authority(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE users_authority
+    ADD CONSTRAINT fk_users_authority_authority FOREIGN KEY (authority_id) REFERENCES authority(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE user_authority
-    ADD CONSTRAINT fk_user_authority_user FOREIGN KEY (user_id) REFERENCES "user"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE users_authority
+    ADD CONSTRAINT fk_users_authority_users FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-INSERT INTO user_authority (user_id, authority_id) VALUES (1, 1);
-INSERT INTO user_authority (user_id, authority_id) VALUES (1, 2);
-INSERT INTO user_authority (user_id, authority_id) VALUES (2, 2);
+INSERT INTO users_authority (user_id, authority_id) VALUES (1, 1);
+INSERT INTO users_authority (user_id, authority_id) VALUES (1, 2);
+INSERT INTO users_authority (user_id, authority_id) VALUES (2, 2);
 
 -- news
 
