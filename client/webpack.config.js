@@ -31,6 +31,7 @@ module.exports = {
             '/login': 'http://localhost:8080/lodegro/'
         }
     },
+    devtool: "source-map",
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.template.html',

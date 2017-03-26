@@ -16,3 +16,4 @@
 *.map
 *.js
 !/client/webpack.config.js
+*.log
