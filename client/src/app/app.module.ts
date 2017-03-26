@@ -13,6 +13,8 @@ import {AdminComponent} from "./news/admin/admin.component";
 import {RedactorComponent} from "./news/redactor/redactor.component";
 import {CanViewService} from "./news/service/can-view.service";
 import NewsService from "./news/service/news.service";
+import {HashLocationStrategy} from "../../node_modules/@angular/common/src/location/hash_location_strategy";
+import {LocationStrategy} from "../../node_modules/@angular/common/src/location/location_strategy";
 
 @NgModule({
     imports: [
@@ -30,6 +32,7 @@ import NewsService from "./news/service/news.service";
     ],
     bootstrap: [AppComponent],
     providers: [
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
         AuthenticationGuard,
         AuthenticationService,
         NewsService,

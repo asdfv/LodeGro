@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
                     // login successful
                     this.router.navigate(['/home']);
                 } else {
+                    console.log("unsuccessfully auth");
                     // login failed
                     this.error = 'Username or password is incorrect';
                 }
