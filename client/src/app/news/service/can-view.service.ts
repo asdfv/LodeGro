@@ -2,23 +2,21 @@ import {Injectable} from "@angular/core";
 import {roles} from "../../app.roles";
 import {AuthenticationService} from "../../security/authentication.service";
 import {OnInit} from "../../../../node_modules/@angular/core/src/metadata/lifecycle_hooks";
+import {CurrentUserService} from "./current-user.service";
 
 @Injectable()
 export class CanViewService {
 
-    constructor(private authenticationService: AuthenticationService) {
+    constructor(private currentUserService: CurrentUserService) {
     };
 
-    // If authorities contains roles.ADMIN return true, else - false
     isAdmin(): boolean {
-        return true;
-        // let authorities: string[] = this.authenticationService.user.authorities;
-        // return authorities == null ? false : authorities.indexOf(roles.ADMIN) > -1;
+        let authorities: string[] = this.currentUserService.get().authorities;
+        return authorities == null ? false : authorities.indexOf(roles.ADMIN) > -1;
     }
 
     isRedactor(): boolean {
-        // let authorities: string[] = this.authenticationService.user.authorities;
-        // return authorities == null ? false : authorities.indexOf(roles.REDACTOR) > -1;
-        return true;
+        let authorities: string[] = this.currentUserService.get().authorities;
+        return authorities == null ? false : authorities.indexOf(roles.REDACTOR) > -1;
     }
 }
