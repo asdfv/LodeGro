@@ -5,18 +5,13 @@ import {AuthenticationService} from "../security/authentication.service";
 @Component({
     templateUrl: "./login.template.html"
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
     credentials: any = {};
     error = "";
 
     constructor(private router: Router,
                 private authenticationService: AuthenticationService) {
-    }
-
-    ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
     }
 
     login() {

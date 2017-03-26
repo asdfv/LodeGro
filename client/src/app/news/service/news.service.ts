@@ -4,6 +4,7 @@ import "rxjs/add/operator/map";
 import {Observable} from "rxjs/Observable";
 import {AuthenticationService} from "../../security/authentication.service";
 import News from "../model/news.model";
+import {CurrentUserService} from "./current-user.service";
 
 @Injectable()
 export default class NewsService {
@@ -13,7 +14,7 @@ export default class NewsService {
     private redactorUrl: string = "/api/news/redactor";
 
     constructor(private http: Http,
-                private authenticationService: AuthenticationService) {
+                private currentUserService: CurrentUserService) {
     }
 
     loadNews(): Observable<News[]> {
@@ -22,14 +23,14 @@ export default class NewsService {
     };
 
     loadAdmin(): Observable<string> {
-        let headers = new Headers({'Authorization': this.authenticationService.user.token});
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
         return this.http.get(this.adminUrl, options)
             .map((response: Response) => response.text());
     };
 
     loadRedactor(): Observable<string> {
-        let headers = new Headers({'Authorization': this.authenticationService.user.token});
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
         return this.http.get(this.redactorUrl, options)
             .map((response: Response) => response.text());

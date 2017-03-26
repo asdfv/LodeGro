@@ -15,6 +15,7 @@ import {CanViewService} from "./news/service/can-view.service";
 import NewsService from "./news/service/news.service";
 import {HashLocationStrategy} from "../../node_modules/@angular/common/src/location/hash_location_strategy";
 import {LocationStrategy} from "../../node_modules/@angular/common/src/location/location_strategy";
+import {CurrentUserService} from "./news/service/current-user.service";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {LocationStrategy} from "../../node_modules/@angular/common/src/location/
         AuthenticationGuard,
         AuthenticationService,
         NewsService,
-        CanViewService
+        CanViewService,
+        CurrentUserService
     ]
 })
 export class AppModule {

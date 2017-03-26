@@ -3,6 +3,7 @@
     <a routerLink="/home">Home page</a>
     <a routerLink="/admin" *ngIf="isAdm()">Admin page</a>
     <a routerLink="/redactor" *ngIf="isRed() || isAdm()" >Redactor page</a>
-    <a routerLink="/login">LogIn/LogOut</a>
+    <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a>
+    <a routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>
 </nav>
 <router-outlet></router-outlet>
