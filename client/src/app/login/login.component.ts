@@ -8,7 +8,7 @@ import {AuthenticationService} from "../security/authentication.service";
 export class LoginComponent {
 
     credentials: any = {};
-    error = "";
+    error: any = "";
 
     constructor(private router: Router,
                 private authenticationService: AuthenticationService) {
@@ -16,16 +16,15 @@ export class LoginComponent {
 
     login() {
         this.authenticationService.login(this.credentials.username, this.credentials.password)
-            .subscribe(result => {
-                if (result === true) {
-                    console.log("auth successfully");
-                    // login successful
+            .subscribe(
+                result => {
+                    console.log("Result: " + result);
                     this.router.navigate(['/home']);
-                } else {
-                    console.log("unsuccessfully auth");
-                    // login failed
-                    this.error = 'Username or password is incorrect';
+                },
+                error => {
+                    this.error = "Bad credentials";
+                    console.log("Authorization error: " + error)
                 }
-            });
+            );
     }
 }

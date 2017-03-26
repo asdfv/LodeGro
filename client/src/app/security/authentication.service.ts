@@ -37,6 +37,9 @@ export class AuthenticationService {
                 } else {
                     return false;
                 }
+            })
+            .catch((error: any) => {
+                return Observable.throw(error)
             });
     }
 
