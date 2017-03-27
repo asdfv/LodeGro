@@ -29,7 +29,7 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LOGGER.debug("Try to get from db user: " + username);
         try {
-            User user = userService.loadUser(username);
+            User user = userService.load(username);
             return new CustomUserDetails(user);
         } catch (Exception e) {
             LOGGER.error("Getting user from DB error. StackTrace: \n");

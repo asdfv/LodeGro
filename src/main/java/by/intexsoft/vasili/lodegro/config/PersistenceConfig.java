@@ -62,7 +62,7 @@ public class PersistenceConfig {
     public JpaVendorAdapter adapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setDatabase(POSTGRESQL);
-        adapter.setShowSql(false);
+        adapter.setShowSql(true);
         return adapter;
     }
 

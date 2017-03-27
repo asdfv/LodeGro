@@ -11,7 +11,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("by.intexsoft.vasili.lodegro.controller")
+@ComponentScan(basePackages = {
+        "by.intexsoft.vasili.lodegro.controller",
+        "by.intexsoft.vasili.lodegro.security.controller"
+})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**

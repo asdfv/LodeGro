@@ -7,6 +7,7 @@ import by.intexsoft.vasili.lodegro.security.model.User;
  */
 public interface UserService {
 
-    User loadUser(String username);
+    User load(String username);
 
+    User save(User user);
 }

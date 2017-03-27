@@ -1,13 +1,11 @@
 package by.intexsoft.vasili.lodegro.security.model;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User extends AbstractPersistable<Integer> {
+public class User {
 
     /**
      * Default constructor
@@ -25,6 +23,11 @@ public class User extends AbstractPersistable<Integer> {
         this.enabled = user.enabled;
         this.authorities = user.authorities;
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
     /**
      * username
