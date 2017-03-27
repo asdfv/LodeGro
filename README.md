@@ -5,13 +5,13 @@ Installation Project for Windows
 
 Install environment (Java 8 must be installed in the system):
 
-1. Download the Tomcat 9 (Core) on [link] (http://tomcat.apache.org/download-90.cgi) and unzip it.
+1. Download the Tomcat 9 (Core) on [link](http://tomcat.apache.org/download-90.cgi) and unzip it.
 
-2. Download Gradle ver. 3.3 [link] (https://gradle.org/install#manually)
+2. Download Gradle ver. 3.3 [link](https://gradle.org/install#manually)
 	* Unpack the archive and set the path in the Path environment variable to the directory */bin* unpacked archive.
  
 
-3. Download and install PostgreSQL on [link] (https://www.postgresql.org/download/windows/)
+3. Download and install PostgreSQL on [link](https://www.postgresql.org/download/windows/)
  
 	* Log in to the standard database "postgres" - use the username and password specified during installation.
 	* Use SQL-query from a file **conf/dump.sql** to create a test database.
