@@ -14,9 +14,8 @@ public class Authority implements GrantedAuthority {
 
     @Id
     @Column
-    @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
 
     /**
      * Role name

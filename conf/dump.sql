@@ -30,7 +30,7 @@ CREATE TABLE users (
     id serial PRIMARY KEY,
     username varchar(64) NOT NULL,
     password varchar(64) NOT NULL,
-	enabled boolean NOT NULL
+    enabled boolean NOT NULL
 );
 
 INSERT INTO users (id, username, password, enabled) VALUES (1, 'adm', 'a', '1');

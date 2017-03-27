@@ -46,10 +46,12 @@ public class UserController {
     private ResponseEntity<User> load(@PathVariable String username) {
         LOGGER.info("Loading user: " + username);
         try {
+            User user = userService.load(username);
+            LOGGER.info("Found in db: " + user);
             return new ResponseEntity<>(userService.load(username), HttpStatus.OK);
         } catch (NullPointerException e) {
             LOGGER.error("User not found " + e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

@@ -25,9 +25,9 @@ public class User {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
 
     /**
      * username
@@ -50,7 +50,7 @@ public class User {
     /**
      * List of roles for {@link User}
      */
-    @ManyToMany(targetEntity = Authority.class, fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Authority.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_authority",
             joinColumns = {@JoinColumn(name = "user_id")},
