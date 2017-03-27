@@ -19,7 +19,7 @@ export class AppComponent implements OnChanges {
         private currentUserService: CurrentUserService) {
     };
 
-    title: string = "Lode News";
+    private title: string = "Lode News";
 
     isAdm(): boolean {
         return this.canViewService.isAdmin();
@@ -35,6 +35,11 @@ export class AppComponent implements OnChanges {
 
     isLogIn(): boolean {
         return this.currentUserService.isLogIn();
+    }
+
+    getCurrentUsername(): string {
+        let currentUser = this.currentUserService.get().username;
+        return currentUser == "anon" ? "" : " - " + currentUser;
     }
 
 }

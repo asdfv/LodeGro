@@ -4,6 +4,6 @@
     <a routerLink="/admin" *ngIf="isAdm()">Admin page</a>
     <a routerLink="/redactor" *ngIf="isRed() || isAdm()" >Redactor page</a>
     <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a>
-    <a routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>
+    <a routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>  {{ getCurrentUsername() }}
 </nav>
 <router-outlet></router-outlet>
