@@ -9,9 +9,14 @@ import javax.persistence.*;
  */
 @Table
 @Entity
-public class News extends AbstractPersistable<Integer> {
+public class News {
 
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public int id;
 
 	/**
 	 * News title

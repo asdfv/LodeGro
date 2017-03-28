@@ -1,15 +1,14 @@
 package by.intexsoft.vasili.lodegro.controller;
 
 import by.intexsoft.vasili.lodegro.model.News;
+import by.intexsoft.vasili.lodegro.security.model.User;
 import by.intexsoft.vasili.lodegro.service.NewsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller for {@link News}
@@ -41,6 +40,11 @@ public class NewsController {
 		}
 		return new ResponseEntity<>(news, HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+	private News save(@RequestBody News news) {
+		return newsService.save(news);
+	}
 
 	@RequestMapping("/redactor")
 	private String redactorTest(){

@@ -14,8 +14,7 @@ import by.intexsoft.vasili.lodegro.service.NewsService;
 @Service
 public class NewsServiceImpl implements NewsService {
 
-	final
-	NewsRepository newsRepository;
+	private final NewsRepository newsRepository;
 
 	@Autowired
 	public NewsServiceImpl(NewsRepository newsRepository) {
@@ -30,5 +29,10 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public Iterable<News> findAll() {
 		return newsRepository.findAll();
+	}
+
+	@Override
+	public News save(News news) {
+		return newsRepository.save(news);
 	}
 }
