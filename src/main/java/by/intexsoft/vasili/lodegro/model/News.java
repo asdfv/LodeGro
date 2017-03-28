@@ -1,7 +1,5 @@
 package by.intexsoft.vasili.lodegro.model;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
 import javax.persistence.*;
 
 /**
@@ -11,22 +9,21 @@ import javax.persistence.*;
 @Entity
 public class News {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
 
-	/**
-	 * News title
-	 */
-	@Column
-	public String title;
-	
-	/**
-	 * News content
-	 */	
-	@Column
-	public String text;
+    /**
+     * News title
+     */
+    @Column
+    public String title;
+
+    /**
+     * News content
+     */
+    @Column
+    public String text;
 }

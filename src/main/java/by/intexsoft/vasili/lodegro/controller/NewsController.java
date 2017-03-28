@@ -1,7 +1,6 @@
 package by.intexsoft.vasili.lodegro.controller;
 
 import by.intexsoft.vasili.lodegro.model.News;
-import by.intexsoft.vasili.lodegro.security.model.User;
 import by.intexsoft.vasili.lodegro.service.NewsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +21,10 @@ public class NewsController {
 	@Autowired
 	private NewsService newsService;
 
+    @RequestMapping(method = RequestMethod.POST)
+	private News save(@RequestBody News news) {
+		return newsService.save(news);
+	}
 
 	@RequestMapping("/all")
 	private ResponseEntity<Iterable<News>> searchAllUsers() {
@@ -41,10 +44,6 @@ public class NewsController {
 		return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-	private News save(@RequestBody News news) {
-		return newsService.save(news);
-	}
 
 	@RequestMapping("/redactor")
 	private String redactorTest(){

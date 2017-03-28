@@ -12,8 +12,10 @@ import javax.persistence.*;
 @Entity
 public class Authority implements GrantedAuthority {
 
+    /**
+     * Id for Authority entity
+     */
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 

@@ -16,7 +16,6 @@ public class UserServiceImpl implements UserService {
 
     public final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
-
     final private UserRepository userRepository;
 
     @Autowired

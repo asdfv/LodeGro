@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -40,6 +40,7 @@ public class PersistenceConfig {
 
     /**
      * Connection settings
+     *
      * @return DataSource
      */
     @Bean
@@ -56,6 +57,7 @@ public class PersistenceConfig {
 
     /**
      * JPA provider
+     *
      * @return JpaVendorAdapter
      */
     @Bean
@@ -68,22 +70,23 @@ public class PersistenceConfig {
 
     /**
      * Manager for entities
-     * @param dataSource
-     * @param adapter
+     *
      * @return LocalContainerEntityManagerFactoryBean
      */
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
-                                                                       JpaVendorAdapter adapter) {
-        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setDataSource(dataSource);
-        factoryBean.setJpaVendorAdapter(adapter);
-        factoryBean.setPackagesToScan(
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource());
+        em.setPackagesToScan(
                 "by.intexsoft.vasili.lodegro.model",
                 "by.intexsoft.vasili.lodegro.security.model"
         );
-        return factoryBean;
+        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        em.setJpaVendorAdapter(vendorAdapter);
+
+        return em;
     }
+
 
     /**
      * Transaction support
@@ -91,6 +94,8 @@ public class PersistenceConfig {
      */
     @Bean
     public PlatformTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        return transactionManager;
     }
 }

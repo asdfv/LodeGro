@@ -92,7 +92,7 @@ public class TokenAuthenticationService {
             }
             return null;
         }
-        LOGGER.info("No token in header or wrong TOKEN_HEADER");
+        LOGGER.debug("No token in header or wrong TOKEN_HEADER");
         return null;
     }
 }

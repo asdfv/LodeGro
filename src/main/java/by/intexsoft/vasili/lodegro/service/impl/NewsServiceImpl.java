@@ -1,11 +1,10 @@
 package by.intexsoft.vasili.lodegro.service.impl;
 
 import by.intexsoft.vasili.lodegro.model.News;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import by.intexsoft.vasili.lodegro.repository.NewsRepository;
 import by.intexsoft.vasili.lodegro.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 /**
