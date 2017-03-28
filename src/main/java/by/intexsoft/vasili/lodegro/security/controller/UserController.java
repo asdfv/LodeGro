@@ -55,4 +55,19 @@ public class UserController {
         }
     }
 
+    /**
+     * Load all
+     */
+    @RequestMapping("/all")
+    private ResponseEntity<Iterable<User>> loadAll() {
+        try {
+            Iterable<User> users = userService.loadAll();
+            return new ResponseEntity<>(users, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
 }

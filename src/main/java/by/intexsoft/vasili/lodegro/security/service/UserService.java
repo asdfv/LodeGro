@@ -10,4 +10,6 @@ public interface UserService {
     User load(String username);
 
     User save(User user);
+
+    Iterable<User> loadAll();
 }

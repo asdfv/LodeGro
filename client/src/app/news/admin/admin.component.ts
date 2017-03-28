@@ -1,19 +1,23 @@
 import {Component, OnInit} from "@angular/core";
-import NewsService from "../service/news.service";
+import {AdminService} from "../service/admin.service";
+import User from "../model/user.model";
 
 @Component({
     templateUrl: "./admin.template.html"
 })
 export class AdminComponent implements OnInit {
-    constructor(private newsService: NewsService) {
+    constructor(private adminService: AdminService) {
     };
 
-    private adminText: string;
+    private users: User[];
+
 
     ngOnInit(): void {
-        this.newsService.loadAdmin().subscribe(
-            (data) => this.adminText = data
+        this.adminService.loadUsers().subscribe(
+            (data) => this.users = data
         );
     }
+
+
 
 }

@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
         return userRepository.save(user);
     }
+
+    @Override
+    public Iterable<User> loadAll() {
+        return userRepository.findAll();
+    }
 }

@@ -16,6 +16,7 @@ import NewsService from "./news/service/news.service";
 import {HashLocationStrategy} from "../../node_modules/@angular/common/src/location/hash_location_strategy";
 import {LocationStrategy} from "../../node_modules/@angular/common/src/location/location_strategy";
 import {CurrentUserService} from "./news/service/current-user.service";
+import {AdminService} from "./news/service/admin.service";
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import {CurrentUserService} from "./news/service/current-user.service";
     bootstrap: [AppComponent],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
+        AdminService,
         AuthenticationGuard,
         AuthenticationService,
         NewsService,
