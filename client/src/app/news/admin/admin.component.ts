@@ -10,12 +10,23 @@ export class AdminComponent implements OnInit {
     };
 
     private users: User[];
+    private editMode: boolean = false;
+
 
 
     ngOnInit(): void {
         this.adminService.loadUsers().subscribe(
             (data) => this.users = data
         );
+    }
+
+    edit(): void {
+        this.editMode = true;
+    }
+
+    save(user: User): User {
+        this.editMode = false;
+        return user;
     }
 
 
