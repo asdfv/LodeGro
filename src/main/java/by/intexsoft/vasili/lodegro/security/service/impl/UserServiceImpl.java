@@ -23,18 +23,41 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Load user by username
+     * @param username
+     * @return {@link User}
+     */
     @Override
     public User load(String username) {
         return userRepository.findByUsername(username);
     }
 
+    /**
+     * Save user to db
+     * @param user {@link User}
+     * @return User
+     */
     @Override
     public User save(User user) {
         return userRepository.save(user);
     }
 
+    /**
+     * Load all user from db
+     * @return Iterable<User>
+     */
     @Override
     public Iterable<User> loadAll() {
         return userRepository.findAll();
+    }
+
+    /**
+     * Delete iser by id from db
+     * @param id
+     */
+    @Override
+    public void delete(int id) {
+        userRepository.delete(id);
     }
 }

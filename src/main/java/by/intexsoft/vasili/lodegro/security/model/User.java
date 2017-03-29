@@ -49,7 +49,7 @@ public class User {
     /**
      * List of roles for {@link User}
      */
-    @ManyToMany(targetEntity = Authority.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Authority.class, fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_authority",
             joinColumns = {@JoinColumn(name = "user_id")},

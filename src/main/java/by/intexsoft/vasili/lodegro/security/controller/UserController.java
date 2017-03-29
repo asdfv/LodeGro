@@ -33,9 +33,9 @@ public class UserController {
             User userToSave = userService.save(user);
             LOGGER.info("User to save authority: " + AuthorityUtils.authorityListToSet(userToSave.authorities));
             return new ResponseEntity<>(userToSave, HttpStatus.CREATED);
-        } catch (NullPointerException e) {
-            LOGGER.error("Error while saving user: " + e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            LOGGER.error("Error while saving user. Duplicate username: " + e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -68,6 +68,19 @@ public class UserController {
         }
     }
 
-
-
+    @RequestMapping(
+            value = "/{id}",
+            method = RequestMethod.DELETE
+    )
+    private ResponseEntity delete(@PathVariable int id) {
+        LOGGER.info("Deleting user with id: " + id);
+        try {
+            userService.delete(id);
+            LOGGER.info("Delete successfully");
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            LOGGER.error("Deleting error " + e.getLocalizedMessage());
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

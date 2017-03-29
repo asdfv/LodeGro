@@ -3,6 +3,8 @@ package by.intexsoft.vasili.lodegro.security.repository;
 import by.intexsoft.vasili.lodegro.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import static javafx.scene.input.KeyCode.T;
+
 /**
  * Repository for working with {@link User}
  */

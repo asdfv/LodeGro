@@ -28,7 +28,7 @@ INSERT INTO authority (id, name) VALUES (3, 'ROLE_AUTHOR');
 
 CREATE TABLE users (
     id serial PRIMARY KEY,
-    username varchar(64) NOT NULL,
+    username varchar(64) NOT NULL UNIQUE,
     password varchar(64) NOT NULL,
     enabled boolean NOT NULL
 );
