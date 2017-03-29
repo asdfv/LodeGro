@@ -1,1 +1,8 @@
-<h1>User-edit component</h1>
+<h3>User-edit component body</h3>
+
+<span>{{ user.username }}</span>
+<br> {{ user.authorities }}
+<div *ngFor="let authority of user.authorities">
+    {{ authority }}
+</div>
+

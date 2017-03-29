@@ -22,9 +22,8 @@ export class AuthenticationService {
         return this.http.post(this.LOGIN_URL, body, options)
             .map((response: Response) => {
 
-                let id = +response.headers.get("id"); // + - convert to number
+                let id = Number(response.headers.get("id"));
                 let token = response.headers.get("Authorization").slice(7);
-
                 let stringAuthorities: string = response.headers.get("Authorities");
                 let authorities: string[] = stringAuthorities.split(",");
 
