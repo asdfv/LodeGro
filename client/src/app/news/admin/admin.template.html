@@ -4,22 +4,11 @@
 <ul>
     <li *ngFor="let user of users">
         <div >
-            {{ user.username }} -
-            <a *ngIf="!editMode" (click)="edit()">Edit</a>
-            <div *ngIf="editMode" (click)="save(user.username)">
-                <label>password</label>
-                <input ngModel="user.password">
-            </div>
-        </div>
-        <div *ngIf="editMode">
-            <input #editUser
-            >
+            {{ user.id }} -{{ user.username }}
+            <button (click)="edit(user.id)">Edit</button>
+
+            <edit-user *ngIf="editMode"></edit-user>
+
         </div>
     </li>
 </ul>
-
-<input #newHero
-       (keyup.enter)="addHero(newHero.value)"
-       (blur)="addHero(newHero.value); newHero.value='' ">
-
-<button (click)="addHero(newHero.value)">Add</button>

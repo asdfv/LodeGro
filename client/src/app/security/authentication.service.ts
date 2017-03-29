@@ -21,6 +21,8 @@ export class AuthenticationService {
 
         return this.http.post(this.LOGIN_URL, body, options)
             .map((response: Response) => {
+
+                let id = +response.headers.get("id"); // + - convert to number
                 let token = response.headers.get("Authorization").slice(7);
 
                 let stringAuthorities: string = response.headers.get("Authorities");
@@ -29,7 +31,7 @@ export class AuthenticationService {
                 authorities.forEach((authority, index, authorities) => console.log(index + " authority: " + authority));
 
                 if (token) {
-                    let user = new User(username, authorities, token);
+                    let user = new User(id, username, authorities, token);
                     this.currentUserService.set(user);
                     let currentUser = this.currentUserService.get();
                     console.log("Saved to storage: " + currentUser.username + " with roles: " + currentUser.authorities + " and token: " + currentUser.token);

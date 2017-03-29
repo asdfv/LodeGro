@@ -3,7 +3,7 @@ import {AdminService} from "../service/admin.service";
 import User from "../model/user.model";
 
 @Component({
-    templateUrl: "./admin.template.html"
+    templateUrl: "./admin.template.html",
 })
 export class AdminComponent implements OnInit {
     constructor(private adminService: AdminService) {
@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.adminService.loadUsers().subscribe(
+        this.adminService.loadAllUsers().subscribe(
             (data) => this.users = data
         );
     }

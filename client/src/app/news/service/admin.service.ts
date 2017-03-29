@@ -13,7 +13,7 @@ export class AdminService {
     };
 
 
-    loadUsers(): Observable<User[]> {
+    loadAllUsers(): Observable<User[]> {
         return this.http.get(this.loadUsersLink)
             .map((response: Response) => response.json());
     };

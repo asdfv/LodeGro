@@ -7,7 +7,7 @@ export class CurrentUserService {
     get(): User {
         if(localStorage.getItem("currentUser"))
         return JSON.parse(localStorage.getItem("currentUser"));
-        return new User("anon", null, null);
+        return new User(0, "anon", null, null);
     }
 
     set(user: User): void {
