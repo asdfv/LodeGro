@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
     private users: User[];
     private editMode: boolean = false;
     private selectedUser: User;
+    private token: string;
 
     ngOnInit(): void {
         this.adminService.loadAllUsers().subscribe(
