@@ -15,7 +15,7 @@ export default class NewsService {
     constructor(private http: Http, private currentUserService: CurrentUserService) {
     }
 
-    loadNews(): Observable<News[]> {
+    loadNewsForAll(): Observable<News[]> {
         return this.http.get(this.newsUrl)
             .map((response: Response) => response.json());
     };
@@ -27,10 +27,10 @@ export default class NewsService {
     //         .map((response: Response) => response.text());
     // };
     //
-    loadRedactor(): Observable<string> {
+    loadRedactor(): Observable<News[]> {
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
         return this.http.get(this.redactorUrl, options)
-            .map((response: Response) => response.text());
+            .map((response: Response) => response.json());
     };
 }

@@ -34,4 +34,14 @@ public class NewsServiceImpl implements NewsService {
 	public News save(News news) {
 		return newsRepository.save(news);
 	}
+
+	@Override
+	public Iterable<News> findForAll() {
+		return newsRepository.findForAll();
+	}
+
+	@Override
+	public Iterable<News> findForRedactor() {
+		return newsRepository.findForRedactor();
+	}
 }

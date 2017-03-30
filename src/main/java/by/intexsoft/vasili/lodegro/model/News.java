@@ -9,8 +9,6 @@ import javax.persistence.*;
 @Entity
 public class News {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -26,4 +24,10 @@ public class News {
      */
     @Column
     public String text;
+
+    /**
+     * Approving redactor
+     */
+    @Column(name = "is_approved")
+    public boolean isApproved;
 }

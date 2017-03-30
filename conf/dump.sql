@@ -58,11 +58,12 @@ INSERT INTO users_authority (user_id, authority_id) VALUES (2, 2);
 CREATE TABLE news (
     id serial PRIMARY KEY,
     title varchar(256) NOT NULL,
-    text text NOT NULL
-);
+    text text NOT NULL,
+    is_approved boolean DEFAULT false
+    );
 
-INSERT INTO news (title, text) VALUES ('First news', 'This is a 1 news');
-INSERT INTO news (title, text) VALUES ('2 news', 'This is a 2 news');
-INSERT INTO news (title, text) VALUES ('3 news', 'This is a 3 news');
-INSERT INTO news (title, text) VALUES ('4 news', 'This is a 4 news');
-INSERT INTO news (title, text) VALUES ('5 news', 'This is a 5 news');
+INSERT INTO news (title, text) VALUES ('Скидки в филиалах «ЛОДЭ» в Гродно. (not approved)', 'С 14 по 31 марта в филиалах в Гродно скидка 80% на постановку диагностических кожных скарификационных тестов.');
+INSERT INTO news (title, text) VALUES ('Итоги прямой линии с гинекологом-эндокринологом, репродуктологом! (not approved)', 'Подведены итоги прямой линии по лечению бесплодия и ЭКО!');
+INSERT INTO news (title, text) VALUES ('Временные затруднения при обращении к online-администратору с мобильных устройств. (not approved)', 'Альтернативные способы обращения в call-центр.');
+INSERT INTO news (title, text) VALUES ('С 8 марта, милые женщины! (not approved)', 'Центр «ЛОДЭ» поздравляет прекрасную половину человечества с женским днем!');
+INSERT INTO news (title, text, is_approved) VALUES ('Готовим ножки к лету! (approved)', 'Ранняя весна, как отмечают хирурги медицинского центра «ЛОДЭ», – это лучшее время для выполнения склеротерапии и лазерной коагуляции вен.', TRUE);

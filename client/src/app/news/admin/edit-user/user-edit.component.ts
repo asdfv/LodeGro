@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import User from "../../model/user.model";
+import {Component, Input, OnInit} from "@angular/core";
 import {AdminService} from "../../service/admin.service";
 import {roles} from "../../../app.roles";
+import User from "../../model/user.model";
 
 @Component({
     selector: 'edit-user',
@@ -9,24 +9,33 @@ import {roles} from "../../../app.roles";
 })
 export class UserEditComponent implements OnInit {
 
+    constructor(private adminService: AdminService) {
+    }
+
+    @Input() user: User;
+    private allRoles: string[];
+
     ngOnInit(): void {
 
         this.allRoles = [];
         // Convert values roles to array
         for (let key in roles) {
             if (roles.hasOwnProperty(key)) {
-                this.allRoles.push(roles[key]);
+                this.allRoles.push(roles[key].name);
             }
         }
     }
 
-    @Input() user: User;
-    private allRoles: Object[];
-
-    private selected: boolean = false;
-
-    constructor(private adminService: AdminService) {
+    hasAuthority(authority: string, user: User): boolean {
+        let ownAuthorities = this.adminService.getRoles(user);
+        return ownAuthorities.indexOf(authority) > -1;
     }
+
+
+
+    // private selected: boolean = false;
+
+
 
     getRoles(user: User): string[] {
         return this.adminService.getRoles(user);

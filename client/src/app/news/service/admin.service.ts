@@ -8,9 +8,17 @@ import {Http, Response} from "@angular/http";
 export class AdminService {
 
     private loadUsersLink: string = "/api/user/all"
+    // private loadUserByUsernameLink: string = "/api/user/";
 
     constructor(private http: Http) {
     };
+
+
+    // loadOne(username: string): Observable<User[]> {
+    //     return this.http.get(this.loadUserByUsernameLink + username)
+    //         .map((response: Response) => response.json());
+    // };
+
 
 
     loadAllUsers(): Observable<User[]> {

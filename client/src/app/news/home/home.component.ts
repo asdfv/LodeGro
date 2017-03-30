@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     newsList: News[];
 
     ngOnInit(): void {
-        this.newsService.loadNews().subscribe(
+        this.newsService.loadNewsForAll().subscribe(
             (data: News[]) => this.newsList = data
         );
     }

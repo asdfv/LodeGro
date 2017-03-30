@@ -27,9 +27,16 @@ public class NewsController {
 	}
 
 	@RequestMapping("/all")
-	private ResponseEntity<Iterable<News>> searchAllUsers() {
-		LOGGER.info("Mapping news/all works");
-		Iterable<News> list = newsService.findAll();
+	private ResponseEntity<Iterable<News>> searchApprovedNews() {
+		LOGGER.debug("Mapping news/all works");
+		Iterable<News> list = newsService.findForAll();
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+
+	@RequestMapping("/redactor")
+	private ResponseEntity<Iterable<News>> searchNotApprovedNews() {
+		LOGGER.debug("Mapping news/redactor");
+		Iterable<News> list = newsService.findForRedactor();
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
@@ -44,11 +51,6 @@ public class NewsController {
 		return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
-
-	@RequestMapping("/redactor")
-	private String redactorTest(){
-		return "Redactor secured data from server";
-	}
 	@RequestMapping("/admin")
 	private String adminTest(){
 		return "Admin secured data from server";
