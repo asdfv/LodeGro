@@ -1,5 +1,7 @@
 package by.intexsoft.vasili.lodegro.security.model;
 
+import org.springframework.security.core.authority.AuthorityUtils;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -25,6 +27,7 @@ public class User {
     }
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
@@ -56,4 +59,13 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "authority_id")}
     )
     public Set<Authority> authorities;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id: " + id +
+                ", username: " + username +
+                ", authorities: " + AuthorityUtils.authorityListToSet(authorities).toString() +
+                "}";
+    }
 }

@@ -22,12 +22,12 @@ export class AuthenticationService {
         return this.http.post(this.LOGIN_URL, body, options)
             .map((response: Response) => {
 
-                let id = Number(response.headers.get("id"));
                 let token = response.headers.get("Authorization").slice(7);
 
                 if (token) {
+
                     let stringAuthorities: string[] = this.tokenService.getScopes(token);
-                    let user = new User(id, username, stringAuthorities, token);
+                    let user = new User(0, username, stringAuthorities, token);
                     this.currentUserService.set(user);
                     let currentUser = this.currentUserService.get();
                     console.log("Saved to storage: " + currentUser.username + " with roles: " + currentUser.authorities + " and token: " + currentUser.token);

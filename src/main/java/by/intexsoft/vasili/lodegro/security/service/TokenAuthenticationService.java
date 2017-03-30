@@ -1,6 +1,5 @@
 package by.intexsoft.vasili.lodegro.security.service;
 
-import by.intexsoft.vasili.lodegro.security.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -33,21 +32,15 @@ public class TokenAuthenticationService {
     private String SECRET = "678a613257189329f0020d62e0e25c8d56e6";
 
     private static final String TOKEN_PREFIX = "Bearer";
-    private static String TOKEN_HEADER = "Authorization";
-    private static String ID_HEADER = "ID";
-
-
+    private static final String TOKEN_HEADER = "Authorization";
 
     /**
      * Create token and passed it to response header
      */
     public void addAuthentication(HttpServletResponse response, Authentication authentication) {
 
-        User user = (User)authentication.getPrincipal();
-        int userId = user.id;
         String username = authentication.getName();
         Set<String> authorities = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-
 
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("scopes", authorities);
@@ -57,9 +50,10 @@ public class TokenAuthenticationService {
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
+
         response.addHeader(TOKEN_HEADER, TOKEN_PREFIX + " " + JWT);
-        response.addHeader(ID_HEADER, String.valueOf(userId));
-        LOGGER.info(username + " successfully login with roles: " + authorities.toString());
+
+        LOGGER.info("Successfully login. Username: " + username + " Roles: " + authorities);
     }
 
     /**
