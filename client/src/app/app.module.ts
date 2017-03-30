@@ -17,7 +17,7 @@ import {HashLocationStrategy} from "../../node_modules/@angular/common/src/locat
 import {LocationStrategy} from "../../node_modules/@angular/common/src/location/location_strategy";
 import {CurrentUserService} from "./news/service/current-user.service";
 import {AdminService} from "./news/service/admin.service";
-import {UserEditComponent} from "./news/admin/edit/user-edit.component";
+import {UserEditComponent} from "./news/admin/edit-user/user-edit.component";
 
 @NgModule({
     imports: [

@@ -1,0 +1,12 @@
+<h3>User-edit component body</h3>
+
+<span>{{ user.username }}</span>
+<br>
+<div *ngFor="let authority of getRoles(user)">
+    {{ authority }}
+</div>
+<hr>
+<div *ngFor="let role of allRoles">
+    <input type="checkbox" id="role" [(ngModel)]="role.isSelected"> {{ selected }} <label for="role">{{ role }}</label>
+</div>
+

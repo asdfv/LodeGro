@@ -12,11 +12,11 @@ export class CanViewService {
 
     isAdmin(): boolean {
         let authorities: string[] = this.currentUserService.get().authorities;
-        return authorities == null ? false : authorities.indexOf(roles.ADMIN) > -1;
+        return authorities == null ? false : authorities.indexOf(roles.ADMIN.name) > -1;
     }
 
     isRedactor(): boolean {
         let authorities: string[] = this.currentUserService.get().authorities;
-        return authorities == null ? false : authorities.indexOf(roles.REDACTOR) > -1;
+        return authorities == null ? false : authorities.indexOf(roles.REDACTOR.name) > -1;
     }
 }

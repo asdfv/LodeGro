@@ -6,6 +6,7 @@ import {OnInit} from "../../../../node_modules/@angular/core/src/metadata/lifecy
     templateUrl: "./redactor.template.html"
 })
 export class RedactorComponent implements OnInit {
+
     constructor(private newsService: NewsService) {
     }
 

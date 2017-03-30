@@ -18,4 +18,13 @@ export class AdminService {
             .map((response: Response) => response.json());
     };
 
+    getRoles(user: User): string[] {
+        let authorities: Object[] = user.authorities;
+        let stringArrayRoles: string[] = [];
+
+        authorities.forEach((authority, index, authorities) =>
+            stringArrayRoles.push(JSON.parse(JSON.stringify(authority)).name));
+        return stringArrayRoles;
+    }
+
 }

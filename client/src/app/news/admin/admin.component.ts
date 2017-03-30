@@ -23,4 +23,8 @@ export class AdminComponent implements OnInit {
         this.selectedUser = user;
         this.editMode = true;
     }
+
+    getRoles(user: User): string[] {
+        return this.adminService.getRoles(user);
+    }
 }
