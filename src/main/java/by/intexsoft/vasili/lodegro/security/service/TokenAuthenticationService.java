@@ -34,7 +34,6 @@ public class TokenAuthenticationService {
 
     private static final String TOKEN_PREFIX = "Bearer";
     private static String TOKEN_HEADER = "Authorization";
-    private static String ROLES_HEADER = "Authorities";
     private static String ID_HEADER = "ID";
 
 
@@ -59,7 +58,6 @@ public class TokenAuthenticationService {
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
         response.addHeader(TOKEN_HEADER, TOKEN_PREFIX + " " + JWT);
-        response.addHeader(ROLES_HEADER, StringUtils.join(authorities, ','));
         response.addHeader(ID_HEADER, String.valueOf(userId));
         LOGGER.info(username + " successfully login with roles: " + authorities.toString());
     }

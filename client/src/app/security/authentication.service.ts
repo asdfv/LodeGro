@@ -5,14 +5,14 @@ import "rxjs/add/operator/map";
 import {constant} from "../app.constatnts";
 import User from "../news/model/user.model";
 import {CurrentUserService} from "../news/service/current-user.service";
+import {TokenService} from "./token.service";
 
 @Injectable()
 export class AuthenticationService {
 
     private LOGIN_URL: string = constant.LOGIN_URL;
 
-    constructor(private http: Http, private currentUserService: CurrentUserService) {
-
+    constructor(private http: Http, private currentUserService: CurrentUserService, private tokenService: TokenService) {
     }
 
     login(username: string, password: string): Observable<boolean> {
@@ -24,13 +24,10 @@ export class AuthenticationService {
 
                 let id = Number(response.headers.get("id"));
                 let token = response.headers.get("Authorization").slice(7);
-                let stringAuthorities: string = response.headers.get("Authorities");
-                let authorities: string[] = stringAuthorities.split(",");
-
-                authorities.forEach((authority, index, authorities) => console.log(index + " authority: " + authority));
 
                 if (token) {
-                    let user = new User(id, username, authorities, token);
+                    let stringAuthorities: string[] = this.tokenService.getScopes(token);
+                    let user = new User(id, username, stringAuthorities, token);
                     this.currentUserService.set(user);
                     let currentUser = this.currentUserService.get();
                     console.log("Saved to storage: " + currentUser.username + " with roles: " + currentUser.authorities + " and token: " + currentUser.token);
