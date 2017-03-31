@@ -35,6 +35,7 @@ CREATE TABLE users (
 
 INSERT INTO users (id, username, password, enabled) VALUES (1, 'adm', 'a', '1');
 INSERT INTO users (id, username, password, enabled) VALUES (2, 'red', 'a', '1');
+INSERT INTO users (id, username, password, enabled) VALUES (3, 'auth', 'a', '1');
 
 -- user_authority
 
@@ -52,6 +53,7 @@ ALTER TABLE users_authority
 INSERT INTO users_authority (user_id, authority_id) VALUES (1, 1);
 INSERT INTO users_authority (user_id, authority_id) VALUES (1, 2);
 INSERT INTO users_authority (user_id, authority_id) VALUES (2, 2);
+INSERT INTO users_authority (user_id, authority_id) VALUES (3, 3);
 
 -- news
 

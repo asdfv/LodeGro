@@ -21,12 +21,16 @@ export class AppComponent implements OnChanges {
 
     private title: string = "Lode News";
 
-    isAdm(): boolean {
+    isAdmin(): boolean {
         return this.canViewService.isAdmin();
     }
 
-    isRed(): boolean {
+    isRedactor(): boolean {
         return this.canViewService.isRedactor();
+    }
+
+    isAuthor(): boolean {
+        return this.canViewService.isAuthor();
     }
 
     logOut(): void {

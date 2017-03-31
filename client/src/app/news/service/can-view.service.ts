@@ -19,4 +19,8 @@ export class CanViewService {
         let authorities: string[] = this.currentUserService.get().authorities;
         return authorities == null ? false : authorities.indexOf(roles.REDACTOR.name) > -1;
     }
+    isAuthor(): boolean {
+        let authorities: string[] = this.currentUserService.get().authorities;
+        return authorities == null ? false : authorities.indexOf(roles.AUTHOR.name) > -1;
+    }
 }

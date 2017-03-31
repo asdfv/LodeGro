@@ -19,6 +19,8 @@ import {AdminService} from "./news/service/admin.service";
 import {UserEditComponent} from "./news/admin/edit-user/user-edit.component";
 import {TokenService} from "./security/token.service";
 import {AuthModule} from "./auth.module";
+import {AuthorComponent} from "./news/author/author.component";
+import {EditNewsComponent} from "./news/edit-news/edit-news.component";
 
 @NgModule({
     imports: [
@@ -33,8 +35,10 @@ import {AuthModule} from "./auth.module";
         LoginComponent,
         HomeComponent,
         AdminComponent,
+        AuthorComponent,
         RedactorComponent,
-        UserEditComponent
+        UserEditComponent,
+        EditNewsComponent
     ],
     bootstrap: [AppComponent],
     providers: [

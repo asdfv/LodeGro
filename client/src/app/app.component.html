@@ -1,8 +1,9 @@
 <h1>{{ title }}</h1>
 <nav>
     <a routerLink="/home">Home page</a>
-    <a routerLink="/admin" *ngIf="isAdm()">Admin page</a>
-    <a routerLink="/redactor" *ngIf="isRed() || isAdm()" >Redactor page</a>
+    <a routerLink="/admin" *ngIf="isAdmin()">Admin page</a>
+    <a routerLink="/redactor" *ngIf="isRedactor() || isAdmin()" >Redactor page</a>
+    <a routerLink="/author" *ngIf="isRedactor() || isAdmin() || isAuthor()" >Author page</a>
     <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a>
     <a routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>  {{ getCurrentUsername() }}
 </nav>
