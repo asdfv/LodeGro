@@ -20,9 +20,11 @@ export class UserEditComponent implements OnInit {
     // private allRoles: string[];
 
     ngOnInit(): void {
-        this.adminService.loadOne(this.user.username).subscribe(
+        this.adminService.loadUserByUsername(this.user.username).subscribe(
+            // data => this.userDetails = data
             data => this.userDetails = this.userDetailFactory.produce(data)
         );
+        console.log("with factory: " + this.userDetails);
 
         // this.allRoles = [];
         // // Convert values roles to array

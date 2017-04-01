@@ -8,7 +8,7 @@ export class UserDetailFactory {
     }
 
     produce(dbUser): UserDetails {
-        
+
         console.log("dbUser: " + JSON.stringify(dbUser));
         let authority: Authority[];
         let id: number;

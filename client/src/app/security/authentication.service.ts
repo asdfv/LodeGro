@@ -12,7 +12,9 @@ export class AuthenticationService {
 
     private LOGIN_URL: string = constant.LOGIN_URL;
 
-    constructor(private http: Http, private currentUserService: CurrentUserService, private tokenService: TokenService) {
+    constructor(private http: Http,
+                private currentUserService: CurrentUserService,
+                private tokenService: TokenService) {
     }
 
     login(username: string, password: string): Observable<boolean> {
