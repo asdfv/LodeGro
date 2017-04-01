@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from "@angular/core";
 import {AdminService} from "../../service/admin.service";
 import {roles} from "../../../app.roles";
 import User from "../../model/user.model";
+import {UserDetails} from "../../model/user-details.model";
+import {UserDetailFactory} from "../../service/user-detail.factory";
 
 @Component({
     selector: 'edit-user',
@@ -9,21 +11,28 @@ import User from "../../model/user.model";
 })
 export class UserEditComponent implements OnInit {
 
-    constructor(private adminService: AdminService) {
+    constructor(private adminService: AdminService, private userDetailFactory: UserDetailFactory) {
     }
 
     @Input() user: User;
-    private allRoles: string[];
+    private userDetails: UserDetails;
+
+    // private allRoles: string[];
 
     ngOnInit(): void {
+        this.adminService.loadOne(this.user.username).subscribe(
+            data => this.userDetails = this.userDetailFactory.produce(data)
+        );
 
-        this.allRoles = [];
-        // Convert values roles to array
-        for (let key in roles) {
-            if (roles.hasOwnProperty(key)) {
-                this.allRoles.push(roles[key].name);
-            }
-        }
+        // this.allRoles = [];
+        // // Convert values roles to array
+        // for (let key in roles) {
+        //     if (roles.hasOwnProperty(key)) {
+        //         this.allRoles.push(roles[key].name);
+        //     }
+        // }
+
+
     }
 
     hasAuthority(authority: string, user: User): boolean {
@@ -31,14 +40,8 @@ export class UserEditComponent implements OnInit {
         return ownAuthorities.indexOf(authority) > -1;
     }
 
-
-
-    // private selected: boolean = false;
-
-
-
-    getRoles(user: User): string[] {
-        return this.adminService.getRoles(user);
-    }
+    // getRoles(user: User): string[] {
+    //     return this.adminService.getRoles(user);
+    // }
 
 }
