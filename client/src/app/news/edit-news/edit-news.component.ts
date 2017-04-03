@@ -7,7 +7,7 @@ import News from "../model/news.model";
 })
 export class EditNewsComponent implements OnInit {
     ngOnInit(): void {
-        this.news = new News("some title", "some text");
+        this.news = new News("some title", "some desc", "some text");
     }
 
 

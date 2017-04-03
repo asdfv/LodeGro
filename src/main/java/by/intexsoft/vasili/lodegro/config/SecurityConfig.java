@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/api/news/all").permitAll()
+                .antMatchers("/api/news/all", "/api/news/get*").permitAll()
 //                .antMatchers("/api/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers("/api/admin/**", "/api/user/**").hasAuthority("ROLE_ADMIN")

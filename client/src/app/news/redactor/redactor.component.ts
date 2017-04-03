@@ -14,7 +14,7 @@ export class RedactorComponent implements OnInit {
     private newsList: News[];
 
     ngOnInit(): void {
-        this.newsService.loadRedactor().subscribe(
+        this.newsService.loadNewsToApproving().subscribe(
             (data) => this.newsList = data
         );
     }

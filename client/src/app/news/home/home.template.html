@@ -2,6 +2,8 @@
 
 <div *ngFor="let news of newsList">
     <h2>{{ news.title }}</h2>
-    {{ news.text }}
+    <h3>{{ news.description }} </h3>
+    <a [routerLink]="['newsDetails', news.id]">Details</a>
+    <br>
     <hr>
 </div>

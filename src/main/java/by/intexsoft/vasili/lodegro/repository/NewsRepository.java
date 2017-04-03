@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NewsRepository extends JpaRepository<News, Integer> {
 
-    @Query("select n from News n where n.isApproved = true")
+    @Query("select new Map(n.id as id, n.title as title, n.description as description) from News n where n.isApproved = true")
     Iterable<News> findApproved();
 
-    @Query("select n from News n where n.isApproved = false")
+    @Query("select new Map(n.id as id, n.title as title, n.description as description) from News n where n.isApproved = false")
     Iterable<News> findForApproving();
 }

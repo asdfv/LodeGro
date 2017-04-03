@@ -20,6 +20,7 @@ import {TokenService} from "./security/token.service";
 import {AuthModule} from "./auth.module";
 import {AuthorComponent} from "./news/author/author.component";
 import {EditNewsComponent} from "./news/edit-news/edit-news.component";
+import {NewsDetailsComponent} from "./news/news-details/news-details";
 
 @NgModule({
     imports: [
@@ -31,13 +32,14 @@ import {EditNewsComponent} from "./news/edit-news/edit-news.component";
     ],
     declarations: [
         AppComponent,
-        LoginComponent,
-        HomeComponent,
         AdminComponent,
         AuthorComponent,
+        EditNewsComponent,
+        LoginComponent,
+        HomeComponent,
+        NewsDetailsComponent,
         RedactorComponent,
         UserEditComponent,
-        EditNewsComponent
     ],
     bootstrap: [AppComponent],
     providers: [
