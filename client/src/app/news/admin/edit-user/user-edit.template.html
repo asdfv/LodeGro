@@ -1,19 +1,24 @@
-<h3>User-edit component body</h3>
+<h2>Edit user:  {{ user.username }} </h2>
 
-<span>{{ username }}</span>
-<br>
-<hr>
-<div *ngFor="let role of allRoles">
-    {{ role }} - {{ hasAuthority(role, user) }}
+<div class="container">
+    <form #f="ngForm">
+
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="user.username" disabled>
+        <br>
+
+        <label>Roles</label>
+        <br>
+        <select multiple [(ngModel)]="user.authorities" name="authorities">
+            <option *ngFor="let authority of allRoles" [ngValue]="authority">{{ authority.name }}</option>
+        </select>
+        <br>
+        <label>
+            Is Active
+            <input type="checkbox" name="enabled"  [(ngModel)]="user.enabled">
+        </label>
+        <br>
+        <button type="submit" (click)="update(f.value)">Submit</button>
+    </form>
+    <pre>submitted value: <br>{{f.value | json}}</pre>
 </div>
-
-
-<!--<div *ngFor="let authority of getRoles(user)">-->
-    <!--{{ authority }}-->
-<!--</div>-->
-<!--<hr>-->
-<!--<div *ngFor="let role of allRoles">-->
-    <!--<input type="checkbox" id="role" [(ngModel)]="hasAuthority(role, user)"> {{ hasAuthority(role, user) }}-->
-    <!--<label for="role">{{ role }}</label>-->
-<!--</div>-->
-

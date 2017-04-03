@@ -6,7 +6,6 @@ import {APP_ROUTS} from "./app.routs";
 import {RouterModule} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
 import {FormsModule} from "@angular/forms";
-import {AuthenticationGuard} from "./security/authentication.guard";
 import {AuthenticationService} from "./security/authentication.service";
 import {HomeComponent} from "./news/home/home.component";
 import {AdminComponent} from "./news/admin/admin.component";
@@ -45,7 +44,6 @@ import {UserDetailFactory} from "./news/service/user-detail.factory";
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         AdminService,
-        AuthenticationGuard,
         AuthenticationService,
         NewsService,
         CanViewService,

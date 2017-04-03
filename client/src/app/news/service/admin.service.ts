@@ -12,7 +12,7 @@ export class AdminService {
     };
 
     loadUserByUsername(username: string): Observable<UserDetails> {
-        return this.http.get(constant.LOAD_USER_BY_USERNAME_URL + username)
+        return this.http.get(constant.USER_URL + username)
             .map((response: Response) => response.json());
     };
 
@@ -28,6 +28,12 @@ export class AdminService {
         authorities.forEach((authority, index, authorities) =>
             stringArrayRoles.push(JSON.parse(JSON.stringify(authority)).name));
         return stringArrayRoles;
+    }
+
+    update(user: UserDetails): Observable<UserDetails> {
+        console.log("Update run, user to update: " + JSON.stringify(user));
+        return this.http.put(constant.USER_URL, user)
+            .map((response: Response) => response.json());
     }
 
 }

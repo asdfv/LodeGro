@@ -20,23 +20,7 @@ export class UserDetailFactory {
         enabled = dbUser.enabled;
         authority = dbUser.authorities;
 
-        // console.log("UserDetails: \nid: " + id + "\nusername: " + username + "\nenabled: " + enabled + "\nauth: " + JSON.stringify(authority));
-
         return new UserDetails(id, username, enabled, authority);
-
     }
 
 }
-
-// {
-//     "id": 2,
-//     "username": "red",
-//     "password": "a",
-//     "enabled": true,
-//     "authorities": [
-//     {
-//         "id": 2,
-//         "name": "ROLE_REDACTOR"
-//     }
-// ]
-// }

@@ -66,6 +66,7 @@ public class User {
                 "id: " + id +
                 ", username: " + username +
                 ", authorities: " + AuthorityUtils.authorityListToSet(authorities).toString() +
+                ", enabled: " + enabled +
                 "}";
     }
 }

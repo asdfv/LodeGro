@@ -1,19 +1,23 @@
 <h1>Admin page title</h1>
 
-<h2>List of users</h2>
-<table *ngIf="!editMode">
-    <tr>
-        <th>id</th>
-        <th>username</th>
-        <th>roles</th>
-    </tr>
-    <tr *ngFor="let user of users">
-        <td>{{ user.id }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ getRoles(user) }}</td>
-        <td><button (click)="edit(user)">Edit</button></td>
-    </tr>
-</table>
+<div *ngIf="!editMode">
+    <h2>List of users</h2>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>username</th>
+            <th>roles</th>
+        </tr>
+        <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ getRoles(user) }}</td>
+            <td>
+                <button (click)="edit(user)">Edit</button>
+            </td>
+        </tr>
+    </table>
+</div>
 
 <edit-user *ngIf="editMode" [user]="selectedUser"></edit-user>
 

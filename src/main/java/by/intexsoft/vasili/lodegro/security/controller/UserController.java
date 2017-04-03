@@ -39,6 +39,25 @@ public class UserController {
         }
     }
 
+     /**
+     * Update
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    private ResponseEntity<User> update(@RequestBody User user) {
+        LOGGER.info("Attempt to update user");
+        try {
+            User userToUpdate = userService.load(user.username);
+            userToUpdate.authorities = user.authorities;
+            userToUpdate.enabled = user.enabled;
+            User newUser = userService.save(userToUpdate);
+            LOGGER.info("Update successfully: " + newUser.toString());
+            return new ResponseEntity<>(userToUpdate, HttpStatus.OK);
+        } catch (Exception e) {
+            LOGGER.error("Error while updating user: " + e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     /**
      * Load one
      */
