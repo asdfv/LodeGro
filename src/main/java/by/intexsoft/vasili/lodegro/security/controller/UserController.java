@@ -87,6 +87,9 @@ public class UserController {
         }
     }
 
+    /**
+     * Delete
+     */
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE

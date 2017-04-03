@@ -20,7 +20,6 @@ import {TokenService} from "./security/token.service";
 import {AuthModule} from "./auth.module";
 import {AuthorComponent} from "./news/author/author.component";
 import {EditNewsComponent} from "./news/edit-news/edit-news.component";
-import {UserDetailFactory} from "./news/service/user-detail.factory";
 
 @NgModule({
     imports: [
@@ -49,7 +48,6 @@ import {UserDetailFactory} from "./news/service/user-detail.factory";
         CanViewService,
         CurrentUserService,
         TokenService,
-        UserDetailFactory
     ]
 })
 export class AppModule {

@@ -1,8 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import User from "../model/user.model";
 import {Http, Response} from "@angular/http";
-import {UserDetails} from "../model/user-details.model";
 import {constant} from "../../app.constatnts";
 
 @Injectable()
@@ -11,7 +10,7 @@ export class AdminService {
     constructor(private http: Http) {
     };
 
-    loadUserByUsername(username: string): Observable<UserDetails> {
+    loadUserByUsername(username: string): Observable<User> {
         return this.http.get(constant.USER_URL + username)
             .map((response: Response) => response.json());
     };
@@ -30,7 +29,7 @@ export class AdminService {
         return stringArrayRoles;
     }
 
-    update(user: UserDetails): Observable<UserDetails> {
+    update(user: User): Observable<User> {
         console.log("Update run, user to update: " + JSON.stringify(user));
         return this.http.put(constant.USER_URL, user)
             .map((response: Response) => response.json());
