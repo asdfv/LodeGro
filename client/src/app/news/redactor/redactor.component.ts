@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import NewsService from "../service/news.service";
-import {OnInit} from "../../../../node_modules/@angular/core/src/metadata/lifecycle_hooks";
+import {OnInit} from "@angular/core/src/metadata/lifecycle_hooks";
 import News from "../model/news.model";
 
 @Component({
@@ -15,7 +15,7 @@ export class RedactorComponent implements OnInit {
 
     ngOnInit(): void {
         this.newsService.loadNewsToApproving().subscribe(
-            (data) => this.newsList = data
+            (data: News[]) => this.newsList = data
         );
     }
 

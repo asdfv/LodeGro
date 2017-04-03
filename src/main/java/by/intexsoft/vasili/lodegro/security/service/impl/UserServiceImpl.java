@@ -44,6 +44,26 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * Update user
+     * @param user {@link User}
+     * @return User
+     */
+    @Override
+    public User update(User user) {
+        try {
+            User userToUpdate = load(user.username);
+            userToUpdate.authorities = user.authorities;
+            userToUpdate.enabled = user.enabled;
+            User newUser = save(userToUpdate);
+            LOGGER.info("Update successfully: " + newUser.toString());
+            return newUser;
+        } catch (Exception e) {
+            LOGGER.error("Error while updating user: " + e.getLocalizedMessage());
+            return null;
+        }
+    }
+
+    /**
      * Load all user from db
      * @return Iterable<User>
      */

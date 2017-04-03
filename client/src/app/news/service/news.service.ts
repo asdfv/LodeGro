@@ -4,6 +4,7 @@ import "rxjs/add/operator/map";
 import {Observable} from "rxjs/Observable";
 import News from "../model/news.model";
 import {CurrentUserService} from "./current-user.service";
+import {constant} from "../../app.constatnts";
 
 @Injectable()
 export default class NewsService {
@@ -38,4 +39,22 @@ export default class NewsService {
         return this.http.get(this.newsDetailsUrl, options)
             .map((response: Response) => response.json());
     };
+
+    update(news: News): Observable<News> {
+
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
+        let options = new RequestOptions({headers: headers});
+
+        console.log("Update run, news id to update: " + news.id + " news title: " + news.title);
+        return this.http.put(constant.NEWS_URL, news, options)
+            .map((response: Response) => response.json());
+    }
+    save(news: News): Observable<News> {
+
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.post(constant.NEWS_URL, news, options)
+            .map((response: Response) => response.json());
+    }
 }

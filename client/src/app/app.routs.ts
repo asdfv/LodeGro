@@ -3,7 +3,8 @@ import {HomeComponent} from "./news/home/home.component";
 import {AdminComponent} from "./news/admin/admin.component";
 import {RedactorComponent} from "./news/redactor/redactor.component";
 import {AuthorComponent} from "./news/author/author.component";
-import {NewsDetailsComponent} from "./news/news-details/news-details";
+import {NewsDetailsComponent} from "./news/news-details/news-details.component";
+import {NewsEditComponent} from "./news/news-edit/news-edit.component";
 
 export const APP_ROUTS = [
     {path: '', component: HomeComponent},
@@ -11,6 +12,7 @@ export const APP_ROUTS = [
     {path: 'admin', component: AdminComponent},
     {path: 'redactor', component: RedactorComponent},
     {path: 'author', component: AuthorComponent},
-    {path: 'newsDetails/:id', component: NewsDetailsComponent}
+    {path: 'newsDetails/:id', component: NewsDetailsComponent},
+    {path: 'newsEdit/:id', component: NewsEditComponent}
 
 ];

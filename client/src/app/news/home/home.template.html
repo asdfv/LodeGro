@@ -3,7 +3,7 @@
 <div *ngFor="let news of newsList">
     <h2>{{ news.title }}</h2>
     <h3>{{ news.description }} </h3>
-    <a [routerLink]="['newsDetails', news.id]">Details</a>
+    <a [routerLink]="['/newsDetails', news.id]">Details</a>
     <br>
     <hr>
 </div>

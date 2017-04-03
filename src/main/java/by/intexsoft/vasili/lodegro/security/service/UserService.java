@@ -14,4 +14,6 @@ public interface UserService {
     Iterable<User> loadAll();
 
     void delete(int id);
+
+    User update(User user);
 }

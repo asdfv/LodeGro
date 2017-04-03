@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private newsService: NewsService, private router: Router) {
+    constructor(private newsService: NewsService) {
     };
 
     newsList: News[];

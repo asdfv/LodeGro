@@ -18,12 +18,26 @@ public class NewsController {
 
 	public final static Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
 
-	@Autowired
-	private NewsService newsService;
+	private final NewsService newsService;
 
-    @RequestMapping(method = RequestMethod.POST)
+	@Autowired
+	public NewsController(NewsService newsService) {
+		this.newsService = newsService;
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
 	private News save(@RequestBody News news) {
 		return newsService.save(news);
+	}
+
+    @RequestMapping(method = RequestMethod.PUT)
+	private News update(@RequestBody News news) {
+    	News newsToUpdate = newsService.findOne(news.id);
+    	newsToUpdate.title = news.title;
+    	newsToUpdate.description = news.description;
+    	newsToUpdate.text = news.text;
+    	newsToUpdate.isApproved = news.isApproved;
+		return newsService.save(newsToUpdate);
 	}
 
 	@RequestMapping("/all")
@@ -51,8 +65,4 @@ public class NewsController {
 		return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
-	@RequestMapping("/admin")
-	private String adminTest(){
-		return "Admin secured data from server";
-	}
 }
