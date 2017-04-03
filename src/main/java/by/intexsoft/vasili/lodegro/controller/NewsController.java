@@ -29,14 +29,14 @@ public class NewsController {
 	@RequestMapping("/all")
 	private ResponseEntity<Iterable<News>> searchApprovedNews() {
 		LOGGER.debug("Mapping news/all works");
-		Iterable<News> list = newsService.findForAll();
+		Iterable<News> list = newsService.findApproved();
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
 	@RequestMapping("/redactor")
 	private ResponseEntity<Iterable<News>> searchNotApprovedNews() {
 		LOGGER.debug("Mapping news/redactor");
-		Iterable<News> list = newsService.findForRedactor();
+		Iterable<News> list = newsService.findToApproving();
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 

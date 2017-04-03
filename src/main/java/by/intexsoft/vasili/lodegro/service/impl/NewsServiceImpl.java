@@ -36,12 +36,12 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public Iterable<News> findForAll() {
-		return newsRepository.findForAll();
+	public Iterable<News> findApproved() {
+		return newsRepository.findApproved();
 	}
 
 	@Override
-	public Iterable<News> findForRedactor() {
-		return newsRepository.findForRedactor();
+	public Iterable<News> findToApproving() {
+		return newsRepository.findForApproving();
 	}
 }

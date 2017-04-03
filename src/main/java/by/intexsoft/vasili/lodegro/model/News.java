@@ -20,6 +20,12 @@ public class News {
     public String title;
 
     /**
+     * News description
+     */
+    @Column
+    public String description;
+
+    /**
      * News content
      */
     @Column

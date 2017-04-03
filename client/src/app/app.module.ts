@@ -14,7 +14,7 @@ import {CanViewService} from "./news/service/can-view.service";
 import NewsService from "./news/service/news.service";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {CurrentUserService} from "./news/service/current-user.service";
-import {AdminService} from "./news/service/admin.service";
+import {UserService} from "./news/service/user.service";
 import {UserEditComponent} from "./news/admin/edit-user/user-edit.component";
 import {TokenService} from "./security/token.service";
 import {AuthModule} from "./auth.module";
@@ -42,7 +42,7 @@ import {EditNewsComponent} from "./news/edit-news/edit-news.component";
     bootstrap: [AppComponent],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        AdminService,
+        UserService,
         AuthenticationService,
         NewsService,
         CanViewService,

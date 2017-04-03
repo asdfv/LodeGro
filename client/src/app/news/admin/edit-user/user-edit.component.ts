@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {AdminService} from "../../service/admin.service";
+import {UserService} from "../../service/user.service";
 import {roles} from "../../../app.roles";
 import User from "../../model/user.model";
 import {Authority} from "../../model/authority.model";
@@ -10,7 +10,7 @@ import {Authority} from "../../model/authority.model";
 })
 export class UserEditComponent implements OnInit {
 
-    constructor(private adminService: AdminService) {
+    constructor(private userService: UserService) {
     }
 
     @Input() user: User;
@@ -28,12 +28,12 @@ export class UserEditComponent implements OnInit {
     }
 
     getRoles(user: User): string[] {
-        return this.adminService.getRoles(user);
+        return this.userService.getRoles(user);
     }
 
     update(user: User) {
         this.loading = true;
-        this.adminService.update(user).subscribe(
+        this.userService.update(user).subscribe(
             data => {
                 console.log("Successfully update: " + JSON.stringify(data));
                 this.loading = false;

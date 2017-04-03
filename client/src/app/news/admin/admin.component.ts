@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
-import {AdminService} from "../service/admin.service";
+import {UserService} from "../service/user.service";
 import User from "../model/user.model";
 
 @Component({
     templateUrl: "./admin.template.html",
 })
 export class AdminComponent implements OnInit {
-    constructor(private adminService: AdminService) {
+    constructor(private userService: UserService) {
     };
 
     private users: User[];
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
     private selectedUser: User;
 
     ngOnInit(): void {
-        this.adminService.loadAllUsers().subscribe(
+        this.userService.loadAllUsers().subscribe(
             data => this.users = data
         );
     }
@@ -25,6 +25,6 @@ export class AdminComponent implements OnInit {
     }
 
     getRoles(user: User): string[] {
-        return this.adminService.getRoles(user);
+        return this.userService.getRoles(user);
     }
 }

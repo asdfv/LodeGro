@@ -27,11 +27,11 @@ public interface NewsService {
 	/**
 	 * Find all approved {@link News}
 	 */
-	Iterable<News> findForAll();
+	Iterable<News> findApproved();
 
 	/**
 	 * Find not approved {@link News}
 	 */
-	Iterable<News> findForRedactor();
+	Iterable<News> findToApproving();
 	
 }
