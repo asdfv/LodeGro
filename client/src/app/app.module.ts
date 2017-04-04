@@ -21,6 +21,7 @@ import {AuthModule} from "./auth.module";
 import {AuthorComponent} from "./news/author/author.component";
 import {NewsEditComponent} from "./news/news-edit/news-edit.component";
 import {NewsDetailsComponent} from "./news/news-details/news-details.component";
+import {UserCreateComponent} from "./news/admin/user-create/user-create.component";
 
 @NgModule({
     imports: [
@@ -40,6 +41,7 @@ import {NewsDetailsComponent} from "./news/news-details/news-details.component";
         NewsDetailsComponent,
         RedactorComponent,
         UserEditComponent,
+        UserCreateComponent
     ],
     bootstrap: [AppComponent],
     providers: [

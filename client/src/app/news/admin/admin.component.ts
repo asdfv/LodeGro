@@ -27,6 +27,7 @@ export class AdminComponent implements OnInit {
     }
 
     delete(id: number): void {
+        confirm("Are you serious?");
         this.loading = true;
         this.userService.delete(id).subscribe(
             () => {

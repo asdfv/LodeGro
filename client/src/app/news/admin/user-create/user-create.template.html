@@ -1,0 +1,34 @@
+<h2>Create user</h2>
+
+<div class="container">
+    <form #userForm="ngForm">
+
+        <label>Username</label>
+        <br>
+        <input type="text" name="username" [(ngModel)]="user.username">
+        <br>
+
+        <label>Roles</label>
+        <br>
+        <select multiple [(ngModel)]="user.authorities" name="authorities">
+            <option *ngFor="let authority of allRoles" [ngValue]="authority">{{ authority.name }}</option>
+        </select>
+        <br>
+        <label>
+            Password
+            <input type="password" name="password" [(ngModel)]="user.password">
+        </label>
+        <br>
+        <label>
+            Is Active
+            <input type="checkbox" name="enabled" [(ngModel)]="user.enabled">
+        </label>
+        <br>
+        <button type="submit" (click)="save(userForm.value)" [disabled]="loading">Save</button>
+        <!--<img *ngIf="loading" [src]="constant.LOADING_SMALL"/>-->
+        <button [routerLink]="['/admin']">Cancel</button>
+    </form>
+    <pre>submitted value: <br>{{userForm.value | json}}</pre>
+    <div> {{ errorMessage }} </div>
+    <div> {{ successMessage }} </div>
+</div>

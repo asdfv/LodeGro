@@ -50,6 +50,16 @@ export class UserService {
             .map((response: Response) => response.json());
     }
 
+    save(user: User): Observable<User> {
+
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
+        let options = new RequestOptions({headers: headers});
+
+        console.log("Save run, user to save: " + JSON.stringify(user));
+        return this.http.post(constant.USER_URL, user, options)
+            .map((response: Response) => response.json());
+    }
+
     delete(id: number): Observable<Response> {
 
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
