@@ -44,4 +44,9 @@ public class NewsServiceImpl implements NewsService {
 	public Iterable<News> findToApproving() {
 		return newsRepository.findForApproving();
 	}
+
+    @Override
+    public void delete(int id) {
+        newsRepository.delete(id);
+    }
 }

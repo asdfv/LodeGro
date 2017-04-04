@@ -25,44 +25,86 @@ public class NewsController {
 		this.newsService = newsService;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	private News save(@RequestBody News news) {
-		return newsService.save(news);
-	}
-
-    @RequestMapping(method = RequestMethod.PUT)
-	private News update(@RequestBody News news) {
-    	News newsToUpdate = newsService.findOne(news.id);
-    	newsToUpdate.title = news.title;
-    	newsToUpdate.description = news.description;
-    	newsToUpdate.text = news.text;
-    	newsToUpdate.isApproved = news.isApproved;
-		return newsService.save(newsToUpdate);
-	}
-
-	@RequestMapping("/all")
-	private ResponseEntity<Iterable<News>> searchApprovedNews() {
-		LOGGER.debug("Mapping news/all works");
-		Iterable<News> list = newsService.findApproved();
-		return new ResponseEntity<>(list, HttpStatus.OK);
-	}
-
-	@RequestMapping("/redactor")
-	private ResponseEntity<Iterable<News>> searchNotApprovedNews() {
-		LOGGER.debug("Mapping news/redactor");
-		Iterable<News> list = newsService.findToApproving();
-		return new ResponseEntity<>(list, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/get", params = "id")
-	private ResponseEntity<News> searchUser(@RequestParam("id") int id) {
-		LOGGER.info("Mapping news?id working");
-		News news = newsService.findOne(id);
-		if (news == null) {
-			LOGGER.info("Not found News with id = " + id);
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<>(news, HttpStatus.OK);
+    /**
+     * Save
+     *
+     * @param news {@link News}
+     * @return {@link News}
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    private News save(@RequestBody News news) {
+        return newsService.save(news);
     }
 
+    /**
+     * Update
+     *
+     * @param news {@link News}
+     * @return {@link News}
+     */
+    @RequestMapping(method = RequestMethod.PUT)
+    private News update(@RequestBody News news) {
+        News newsToUpdate = newsService.findOne(news.id);
+        newsToUpdate.title = news.title;
+        newsToUpdate.description = news.description;
+        newsToUpdate.text = news.text;
+        newsToUpdate.isApproved = news.isApproved;
+        return newsService.save(newsToUpdate);
+    }
+
+    /**
+     * Get all approved news
+     * @return list of {@link News}
+     */
+    @RequestMapping("/all")
+    private ResponseEntity<Iterable<News>> searchApprovedNews() {
+        LOGGER.debug("Mapping news/all works");
+        Iterable<News> list = newsService.findApproved();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    /**
+     * Load news for approving
+     * @return list of {@link News}
+     */
+    @RequestMapping("/forApproving")
+    private ResponseEntity<Iterable<News>> searchNotApprovedNews() {
+        LOGGER.debug("Mapping news/redactor");
+        Iterable<News> list = newsService.findToApproving();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    /**
+     * Load news by id
+     * @param id
+     * @return {@link News}
+     */
+    @RequestMapping(value = "/get", params = "id")
+    private ResponseEntity<News> searchNews(@RequestParam("id") int id) {
+        LOGGER.info("Mapping news?id working");
+        News news = newsService.findOne(id);
+        if (news == null) {
+            LOGGER.info("Not found News with id = " + id);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(news, HttpStatus.OK);
+    }
+
+    /**
+     * Delete news by id
+     *
+     * @param id
+     * @return {@link News}
+     */
+    @RequestMapping(params = "id", method = RequestMethod.DELETE)
+    private ResponseEntity deleteNews(@RequestParam("id") int id) {
+        LOGGER.info("Deleting news with id = " + id);
+        try {
+            newsService.delete(id);
+        } catch (Exception e) {
+            LOGGER.error("News with id = " + id + " not found.");
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

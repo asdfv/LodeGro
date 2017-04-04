@@ -33,5 +33,10 @@ public interface NewsService {
 	 * Find not approved {@link News}
 	 */
 	Iterable<News> findToApproving();
-	
+
+    /**
+     * Delete {@link News} by id
+     */
+    void delete(int id);
+
 }

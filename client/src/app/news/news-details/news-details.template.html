@@ -4,5 +4,5 @@
     <h2>{{news.title}}</h2>
     <h3>{{news.description}}</h3>
     <div>{{news.text}}</div>
-    <button [routerLink]="['/newsEdit', news.id]">Edit</button>
+    <button *ngIf="canEdit()" [routerLink]="['/newsEdit', news.id]">Edit</button>
 </div>

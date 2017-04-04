@@ -33,12 +33,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/api/news/all", "/api/news/get*").permitAll()
-//                .antMatchers("/api/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/api/admin/**", "/api/user/**").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/api/news/redactor/**").hasAuthority("ROLE_REDACTOR")
-                .antMatchers("/api/news/author/**").hasAuthority("ROLE_AUTHOR")
+                .antMatchers(HttpMethod.GET, "/api/news/all", "/api/news/get").permitAll()
+
+                .antMatchers(HttpMethod.GET, "/api/news/forApproving").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
+                .antMatchers(HttpMethod.POST, "/api/news").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
+                .antMatchers(HttpMethod.PUT, "/api/news").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
+                .antMatchers(HttpMethod.DELETE, "/api/news").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
+
+                .antMatchers("/api/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new JWTLoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)

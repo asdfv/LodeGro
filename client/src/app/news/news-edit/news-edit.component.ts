@@ -2,13 +2,17 @@ import {Component, OnInit} from "@angular/core";
 import News from "../model/news.model";
 import {ActivatedRoute, Params} from "@angular/router";
 import NewsService from "../service/news.service";
+import {CanViewService} from "../service/can-view.service";
+import {Response} from "@angular/http";
 
 @Component({
     templateUrl: 'news-edit.template.html',
     selector: "news-edit"
 })
 export class NewsEditComponent implements OnInit {
-    constructor(private route: ActivatedRoute, private newsService: NewsService) {
+    constructor(private route: ActivatedRoute,
+                private newsService: NewsService,
+                private canViewService: CanViewService) {
     }
 
     private loading: boolean = true;
@@ -21,9 +25,7 @@ export class NewsEditComponent implements OnInit {
         this.route.params.subscribe(
             (params: Params) => {
                 newsId = +params["id"];
-                console.log("id = " + newsId);
                 if (!isNaN(newsId)) {
-                    console.log("loadNewsDetails in NewsEditComponent started if loop");
                     this.newsService.loadNewsDetails(newsId).subscribe(
                         (data: News) => {
                             this.news = data;
@@ -34,6 +36,10 @@ export class NewsEditComponent implements OnInit {
                 this.loading = false;
             }
         );
+    }
+
+    isRedactor(): boolean {
+        return this.canViewService.isRedactor();
     }
 
     updateOrSave(): void {
@@ -47,6 +53,7 @@ export class NewsEditComponent implements OnInit {
                 console.log("Successfully save/update: " + JSON.stringify(data));
                 this.loading = false;
                 this.successMessage = "Successfully update!";
+                confirm("Successfully update!");
             },
             error => this.logError(error)
         );
@@ -62,6 +69,18 @@ export class NewsEditComponent implements OnInit {
             },
             error => this.logError(error)
         );
+    }
+
+    delete(id: number): void {
+        this.loading = true;
+        this.newsService.delete(id).subscribe(
+            (response: Response) => {
+                console.log("Deleting response status: " + response.status);
+                this.loading = false;
+                this.successMessage = "Deleting complete!";
+            },
+            error => this.logError(error)
+        )
     }
 
     logError(err) {

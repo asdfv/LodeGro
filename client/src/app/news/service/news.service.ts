@@ -9,34 +9,28 @@ import {constant} from "../../app.constatnts";
 @Injectable()
 export default class NewsService {
 
-    private newsUrl: string = "/api/news/all";
-    private redactorUrl: string = "/api/news/redactor";
-    private newsDetailsUrl: string = "/api/news/get";
-
     constructor(private http: Http, private currentUserService: CurrentUserService) {
-
     }
 
     loadApprovedNews(): Observable<News[]> {
-        return this.http.get(this.newsUrl)
+        return this.http.get(constant.NEWS_ALL)
             .map((response: Response) => response.json());
     };
 
     loadNewsToApproving(): Observable<News[]> {
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
-        return this.http.get(this.redactorUrl, options)
+        return this.http.get(constant.NEWS_FOR_APPROVING, options)
             .map((response: Response) => response.json());
     };
 
     loadNewsDetails(id: number): Observable<News> {
 
-        let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let params = new URLSearchParams();
         params.set("id", String(id));
-        let options = new RequestOptions({headers: headers, search: params});
+        let options = new RequestOptions({search: params});
 
-        return this.http.get(this.newsDetailsUrl, options)
+        return this.http.get(constant.NEWS_DETAILS, options)
             .map((response: Response) => response.json());
     };
 
@@ -49,6 +43,7 @@ export default class NewsService {
         return this.http.put(constant.NEWS_URL, news, options)
             .map((response: Response) => response.json());
     }
+
     save(news: News): Observable<News> {
 
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
@@ -56,5 +51,15 @@ export default class NewsService {
 
         return this.http.post(constant.NEWS_URL, news, options)
             .map((response: Response) => response.json());
+    }
+
+    delete(id: number): Observable<Response> {
+
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
+        let params = new URLSearchParams();
+        params.set("id", String(id));
+        let options = new RequestOptions({headers: headers, search: params});
+
+        return this.http.delete(constant.NEWS_URL, options);
     }
 }

@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component} from "@angular/core";
+import {Router} from "@angular/router";
 import {AuthenticationService} from "../security/authentication.service";
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent {
             .subscribe(
                 result => {
                     console.log("Result: " + result);
-                    this.router.navigate(['/home']);
+                    this.router.navigate(['/']);
                 },
                 error => {
                     this.error = "Bad credentials";
