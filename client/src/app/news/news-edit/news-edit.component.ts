@@ -12,7 +12,7 @@ export class NewsEditComponent implements OnInit {
     }
 
     private loading: boolean = true;
-    private news: News = new News("Wait...", "Please wait...", "Wait epta!");
+    private news: News = new News("", "", "");
     private errorMessage: string = "";
     private successMessage: string = "";
 
@@ -21,19 +21,23 @@ export class NewsEditComponent implements OnInit {
         this.route.params.subscribe(
             (params: Params) => {
                 newsId = +params["id"];
-            }
-        );
-        this.newsService.loadNewsDetails(newsId).subscribe(
-            (data: News) => {
-                this.news = data;
+                console.log("id = " + newsId);
+                if (!isNaN(newsId)) {
+                    console.log("loadNewsDetails in NewsEditComponent started if loop");
+                    this.newsService.loadNewsDetails(newsId).subscribe(
+                        (data: News) => {
+                            this.news = data;
+                            this.loading = false;
+                        }
+                    );
+                }
                 this.loading = false;
             }
         );
     }
 
-    updateOrSave(news: News, id: number): void {
-        console.log("updateOrSave: id = " + id);
-        id == null ? this.save(news) : this.update(news);
+    updateOrSave(): void {
+        this.news.id == undefined ? this.save(this.news) : this.update(this.news);
     }
 
     update(news: News) {
