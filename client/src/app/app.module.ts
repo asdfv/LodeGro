@@ -15,7 +15,7 @@ import NewsService from "./news/service/news.service";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {CurrentUserService} from "./news/service/current-user.service";
 import {UserService} from "./news/service/user.service";
-import {UserEditComponent} from "./news/admin/edit-user/user-edit.component";
+import {UserEditComponent} from "./news/admin/user-edit/user-edit.component";
 import {TokenService} from "./security/token.service";
 import {AuthModule} from "./auth.module";
 import {AuthorComponent} from "./news/author/author.component";

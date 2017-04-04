@@ -14,7 +14,7 @@ export class NewsDetailsComponent implements OnInit {
     }
 
     private loading: boolean = true;
-    private news: News = new News("Wait...", "Please wait...", "Wait epta!");
+    private news: News = new News("", "", "");
 
     ngOnInit() {
         let newsId: number = 0;

@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import User from "../model/user.model";
-import {Headers, Http, RequestOptions, Response} from "@angular/http";
+import {Headers, Http, RequestOptions, Response, URLSearchParams} from "@angular/http";
 import {constant} from "../../app.constatnts";
 import {CurrentUserService} from "./current-user.service";
 
@@ -48,6 +48,14 @@ export class UserService {
         console.log("Update run, user to update: " + JSON.stringify(user));
         return this.http.put(constant.USER_URL, user, options)
             .map((response: Response) => response.json());
+    }
+
+    delete(id: number): Observable<Response> {
+
+        let headers = new Headers({'Authorization': this.currentUserService.get().token});
+        let options = new RequestOptions({headers: headers});
+
+        return this.http.delete(constant.USER_URL + "/" + id, options);
     }
 
 }

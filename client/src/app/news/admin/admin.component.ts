@@ -12,6 +12,8 @@ export class AdminComponent implements OnInit {
     private users: User[];
     private editMode: boolean = false;
     private selectedUser: User;
+    private loading: boolean = false;
+    private errorMessage: string = "";
 
     ngOnInit(): void {
         this.userService.loadAllUsers().subscribe(
@@ -22,6 +24,17 @@ export class AdminComponent implements OnInit {
     edit(user: User): void {
         this.selectedUser = user;
         this.editMode = true;
+    }
+
+    delete(id: number): void {
+        this.loading = true;
+        this.userService.delete(id).subscribe(
+            () => {
+                this.loading = false;
+                this.ngOnInit();
+            },
+            error => this.errorMessage = error
+        );
     }
 
     getRoles(user: User): string[] {
