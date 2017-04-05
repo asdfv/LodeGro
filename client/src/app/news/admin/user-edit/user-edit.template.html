@@ -1,33 +1,36 @@
-<h2>Edit user: {{ user.username }} </h2>
+<h2>Edit user: {{ userDetails.username }} </h2>
 
 <div class="container">
     <form #userForm="ngForm">
 
         <label>Username</label>
         <br>
-        <input type="text" name="username" [(ngModel)]="user.username" readonly>
+        <input type="text" name="username" [(ngModel)]="userDetails.username" readonly>
         <br>
 
         <label>Roles</label>
         <br>
-        <select multiple [(ngModel)]="user.authorities" name="authorities">
+        <select multiple [(ngModel)]="userDetails.authorities" name="authorities">
             <option *ngFor="let authority of allRoles" [ngValue]="authority">{{ authority.name }}</option>
         </select>
         <br>
         <label>
             Is Active
-            <input type="checkbox" name="enabled" [(ngModel)]="user.enabled">
+            <input type="checkbox" name="enabled" [(ngModel)]="userDetails.enabled">
         </label>
         <br>
         <label>
             Password <br>
-            <input type="text" name="password" [(ngModel)]="user.password">
+            <input type="text" name="password" [(ngModel)]="userDetails.password">
         </label>
         <br>
         <button type="submit" (click)="update(userForm.value)" [disabled]="loading">Save</button>
         <img *ngIf="loading"
              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+        <button [routerLink]="['/admin']" >Back</button>
+
     </form>
+    <pre>Send data: {{ userForm.value | json }}</pre>
     <div> {{ errorMessage }} </div>
     <div> {{ successMessage }} </div>
 </div>

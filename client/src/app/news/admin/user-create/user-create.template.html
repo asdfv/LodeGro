@@ -25,10 +25,10 @@
         </label>
         <br>
         <button type="submit" (click)="save(userForm.value)" [disabled]="loading">Save</button>
-        <!--<img *ngIf="loading" [src]="constant.LOADING_SMALL"/>-->
+        <img *ngIf="loading" [src]="LOADING_ICON"/>
         <button [routerLink]="['/admin']">Cancel</button>
     </form>
-    <pre>submitted value: <br>{{userForm.value | json}}</pre>
+    <!--<pre>submitted value: <br>{{userForm.value | json}}</pre>-->
     <div> {{ errorMessage }} </div>
     <div> {{ successMessage }} </div>
 </div>

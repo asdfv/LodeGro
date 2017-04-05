@@ -4,6 +4,7 @@ import {Authority} from "../../model/authority.model";
 import {roles} from "../../../app.roles";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
+import {constant} from "../../../app.constatnts";
 
 @Component({
     templateUrl: 'user-create.template.html'
@@ -17,6 +18,7 @@ export class UserCreateComponent implements OnInit {
     private allRoles: Authority[] = [];
     private loading = false;
     private errorMessage: string = "";
+    private LOADING_ICON = constant.LOADING_SMALL;
 
     ngOnInit(): void {
         for (let key in roles) {

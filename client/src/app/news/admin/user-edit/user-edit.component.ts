@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../service/user.service";
 import {roles} from "../../../app.roles";
 import {Authority} from "../../model/authority.model";
 import User from "../../model/user.model";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
     selector: 'edit-user',
@@ -10,10 +11,11 @@ import User from "../../model/user.model";
 })
 export class UserEditComponent implements OnInit {
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+                private route: ActivatedRoute,
+                private router: Router) {
     }
 
-    @Input() user: User;
     private userDetails: Object = {};
     private allRoles: Authority[] = [];
     private loading: boolean = false;
@@ -21,10 +23,19 @@ export class UserEditComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.userService.loadUserByUsername(this.user.username).subscribe(
-            data => {
-                this.userDetails = data;
-            });
+        let username: string;
+        this.route.params.subscribe(
+            (params: Params) => {
+                username = params["username"];
+                this.userService.loadUserByUsername(username).subscribe(
+                    data => {
+                        this.userDetails = data;
+                        this.loading = false;
+                    }
+                );
+                this.loading = false;
+            }
+        );
 
         for (let key in roles) {
             this.allRoles.push(roles[key]);
@@ -41,7 +52,7 @@ export class UserEditComponent implements OnInit {
             data => {
                 console.log("Successfully update: " + JSON.stringify(data));
                 this.loading = false;
-                ;
+                this.router.navigate(["/admin"]);
             },
             error => this.logError(error)
         );

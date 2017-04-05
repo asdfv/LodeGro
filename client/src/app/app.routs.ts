@@ -6,6 +6,7 @@ import {AuthorComponent} from "./news/author/author.component";
 import {NewsDetailsComponent} from "./news/news-details/news-details.component";
 import {NewsEditComponent} from "./news/news-edit/news-edit.component";
 import {UserCreateComponent} from "./news/admin/user-create/user-create.component";
+import {UserEditComponent} from "./news/admin/user-edit/user-edit.component";
 
 export const APP_ROUTS = [
     {path: '', component: HomeComponent},
@@ -15,6 +16,7 @@ export const APP_ROUTS = [
     {path: 'author', component: AuthorComponent},
     {path: 'newsDetails/:id', component: NewsDetailsComponent},
     {path: 'newsEdit/:id', component: NewsEditComponent},
-    {path: 'userCreate', component: UserCreateComponent}
+    {path: 'userCreate', component: UserCreateComponent},
+    {path: 'userEdit/:username', component: UserEditComponent}
 
 ];
