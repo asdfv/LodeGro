@@ -1,3 +1,23 @@
+LODE Grodno news site
+=========================================
+The site is the basis for the management and publication of news on the web.
+
+***
+
+Server side technologies stack: 
+- Java
+- Spring
+- JWT
+- Hibernate
+
+Client: Angular 2
+
+Build tools: 
+- Gradle
+- Webpack
+
+***
+
 Version 1.0.0  
 
 Installation Project for Windows
