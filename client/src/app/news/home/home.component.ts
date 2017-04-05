@@ -4,7 +4,8 @@ import News from "../model/news.model";
 import {Router} from "@angular/router";
 
 @Component({
-    templateUrl: "./home.template.html"
+    templateUrl: "./home.template.html",
+    styleUrls: ["./home.style.css"]
 })
 export class HomeComponent implements OnInit {
 
@@ -15,7 +16,11 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.newsService.loadApprovedNews().subscribe(
-            (data: News[]) => this.newsList = data
+
+            (data: News[]) => {
+                console.log("data from HomeComponent before parsing: " + JSON.stringify(data));
+                this.newsList = data
+            }
         );
     }
 }

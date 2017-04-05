@@ -3,6 +3,12 @@
 <div *ngFor="let news of newsList">
     <h2>{{ news.title }}</h2>
     <h3>{{ news.description }} </h3>
+    <div class="created_on">
+        <p>
+            Последнее редактирование: {{news.lastEdit | date:'HH:mm / yyyy-MM-dd'}} <br>
+            Автор: {{news.createdBy}}
+        </p>
+    </div>
     <a [routerLink]="['/newsDetails', news.id]">Details</a>
     <br>
     <hr>

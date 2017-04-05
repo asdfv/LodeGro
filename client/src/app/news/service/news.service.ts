@@ -36,6 +36,8 @@ export default class NewsService {
 
     update(news: News): Observable<News> {
 
+        news.lastEdit = + new Date();
+
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
 
@@ -45,6 +47,8 @@ export default class NewsService {
     }
 
     save(news: News): Observable<News> {
+
+        news.createdBy = this.currentUserService.get().username;
 
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
