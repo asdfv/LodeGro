@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/news")
 public class NewsController {
 
-	public final static Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
+    public final static Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
 
-	private final NewsService newsService;
+    private final NewsService newsService;
 
-	@Autowired
-	public NewsController(NewsService newsService) {
-		this.newsService = newsService;
-	}
+    @Autowired
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
 
     /**
      * Save
@@ -32,8 +32,13 @@ public class NewsController {
      * @return {@link News}
      */
     @RequestMapping(method = RequestMethod.POST)
-    private News save(@RequestBody News news) {
-        return newsService.save(news);
+    private ResponseEntity<News> save(@RequestBody News news) {
+        try {
+            return new ResponseEntity<>(newsService.save(news), HttpStatus.CREATED);
+        } catch (Exception e) {
+            LOGGER.error("Save news error");
+            return new ResponseEntity<News>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
@@ -43,45 +48,55 @@ public class NewsController {
      * @return {@link News}
      */
     @RequestMapping(method = RequestMethod.PUT)
-    private News update(@RequestBody News news) {
-        News newsToUpdate = newsService.findOne(news.id);
-        newsToUpdate.title = news.title;
-        newsToUpdate.description = news.description;
-        newsToUpdate.text = news.text;
-        newsToUpdate.isApproved = news.isApproved;
-        return newsService.save(newsToUpdate);
+    private ResponseEntity<News> update(@RequestBody News news) {
+        News newsToUpdate = null;
+        try {
+            newsToUpdate = newsService.findOne(news.id);
+            newsToUpdate.title = news.title;
+            newsToUpdate.description = news.description;
+            newsToUpdate.text = news.text;
+            newsToUpdate.isApproved = news.isApproved;
+            return new ResponseEntity<>(newsService.save(newsToUpdate), HttpStatus.OK);
+        } catch (Exception e) {
+            LOGGER.error("News not found: " + e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     /**
      * Get all approved news
+     *
      * @return list of {@link News}
      */
     @RequestMapping("/all")
     private ResponseEntity<Iterable<News>> searchApprovedNews() {
-        LOGGER.debug("Mapping news/all works");
+        LOGGER.debug("Getting all news");
         Iterable<News> list = newsService.findApproved();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     /**
      * Load news for approving
+     *
      * @return list of {@link News}
      */
     @RequestMapping("/forApproving")
     private ResponseEntity<Iterable<News>> searchNotApprovedNews() {
-        LOGGER.debug("Mapping news/redactor");
+        LOGGER.debug("Getting news for approving");
         Iterable<News> list = newsService.findToApproving();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     /**
      * Load news by id
+     *
      * @param id
      * @return {@link News}
      */
-    @RequestMapping(value = "/get", params = "id")
-    private ResponseEntity<News> searchNews(@RequestParam("id") int id) {
-        LOGGER.info("Mapping news?id working");
+    @RequestMapping(value = "/{id}")
+    private ResponseEntity<News> searchNews(@PathVariable int id) {
+        LOGGER.info("Get news id = " + id);
         News news = newsService.findOne(id);
         if (news == null) {
             LOGGER.info("Not found News with id = " + id);
@@ -96,8 +111,8 @@ public class NewsController {
      * @param id
      * @return {@link News}
      */
-    @RequestMapping(params = "id", method = RequestMethod.DELETE)
-    private ResponseEntity deleteNews(@RequestParam("id") int id) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    private ResponseEntity deleteNews(@PathVariable int id) {
         LOGGER.info("Deleting news with id = " + id);
         try {
             newsService.delete(id);

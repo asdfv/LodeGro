@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import User from "../../model/user.model";
 import {Authority} from "../../model/authority.model";
 import {roles} from "../../../app.roles";
 import {UserService} from "../../service/user.service";
+import {Router} from "@angular/router";
 
 @Component({
     templateUrl: 'user-create.template.html'
 })
 export class UserCreateComponent implements OnInit {
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
     }
 
     private user: User = new User(0, "", [], "");
     private allRoles: Authority[] = [];
     private loading = false;
     private errorMessage: string = "";
-    private successMessage: string = "";
-
 
     ngOnInit(): void {
         for (let key in roles) {
@@ -35,9 +34,12 @@ export class UserCreateComponent implements OnInit {
             data => {
                 console.log("Successfully saved: " + JSON.stringify(data));
                 this.loading = false;
-                this.successMessage = "Successfully saved!";
+                this.router.navigate(["/admin"]);
             },
-            error => this.logError(error)
+            error => {
+                this.logError(error);
+                this.errorMessage = "User " + user.username + " already exist.";
+            }
         );
     }
 

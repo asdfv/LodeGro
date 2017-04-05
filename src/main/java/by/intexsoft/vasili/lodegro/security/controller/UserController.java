@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,13 +27,14 @@ public class UserController {
      */
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity<User> save(@RequestBody User user) {
-        LOGGER.info("Attempt to save user to database");
+        LOGGER.info("Attempt to save user: " + user);
+        if (userService.load(user.username) != null) return new ResponseEntity<>(HttpStatus.CONFLICT);
         try {
             User userToSave = userService.save(user);
-            LOGGER.info("User to save authority: " + AuthorityUtils.authorityListToSet(userToSave.authorities));
+            LOGGER.info("Save successfully: " + user);
             return new ResponseEntity<>(userToSave, HttpStatus.CREATED);
         } catch (Exception e) {
-            LOGGER.error("Error while saving user. Duplicate username: " + e.getLocalizedMessage());
+            LOGGER.error("Error while saving user. Duplicate username? " + e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -55,10 +55,8 @@ public class UserController {
     private ResponseEntity<User> load(@PathVariable String username) {
         LOGGER.info("Loading user: " + username);
         try {
-            User user = userService.load(username);
-            LOGGER.info("Found in db: " + user);
             return new ResponseEntity<>(userService.load(username), HttpStatus.OK);
-        } catch (NullPointerException e) {
+        } catch (Exception e) {
             LOGGER.error("User not found " + e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -70,8 +68,7 @@ public class UserController {
     @RequestMapping("/all")
     private ResponseEntity<Iterable<User>> loadAll() {
         try {
-            Iterable<User> users = userService.loadAll();
-            return new ResponseEntity<>(users, HttpStatus.OK);
+            return new ResponseEntity<>(userService.loadAll(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

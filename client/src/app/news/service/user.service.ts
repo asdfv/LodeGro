@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import User from "../model/user.model";
-import {Headers, Http, RequestOptions, Response, URLSearchParams} from "@angular/http";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import {constant} from "../../app.constatnts";
 import {CurrentUserService} from "./current-user.service";
 
@@ -18,7 +18,7 @@ export class UserService {
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});
 
-        return this.http.get(constant.USER_URL + username, options)
+        return this.http.get(constant.USER_URL + "/" + username, options)
             .map((response: Response) => response.json());
     };
 

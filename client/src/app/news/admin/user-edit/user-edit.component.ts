@@ -1,8 +1,9 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {UserService} from "../../service/user.service";
 import {roles} from "../../../app.roles";
-import User from "../../model/user.model";
 import {Authority} from "../../model/authority.model";
+import User from "../../model/user.model";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'edit-user',
@@ -10,16 +11,23 @@ import {Authority} from "../../model/authority.model";
 })
 export class UserEditComponent implements OnInit {
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService, private router: Router) {
     }
 
     @Input() user: User;
+    private userDetails: Object = {};
     private allRoles: Authority[] = [];
     private loading: boolean = false;
     private errorMessage: string = "";
-    private successMessage: string = "";
 
     ngOnInit(): void {
+
+        this.userService.loadUserByUsername(this.user.username).subscribe(
+            data => {
+                this.userDetails = data;
+                console.log("UserDetails?" + JSON.stringify(data));
+
+            });
 
         // Get all roles and push it into list of roles
         for (let key in roles) {
@@ -37,7 +45,7 @@ export class UserEditComponent implements OnInit {
             data => {
                 console.log("Successfully update: " + JSON.stringify(data));
                 this.loading = false;
-                this.successMessage = "Successfully update!";
+                this.router.navigate(["/admin"]);
             },
             error => this.logError(error)
         );

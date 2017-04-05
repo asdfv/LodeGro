@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Headers, Http, RequestOptions, Response, URLSearchParams} from "@angular/http";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import "rxjs/add/operator/map";
 import {Observable} from "rxjs/Observable";
 import News from "../model/news.model";
@@ -25,12 +25,12 @@ export default class NewsService {
     };
 
     loadNewsDetails(id: number): Observable<News> {
+        //
+        // let params = new URLSearchParams();
+        // params.set("id", String(id));
+        // let options = new RequestOptions({search: params});
 
-        let params = new URLSearchParams();
-        params.set("id", String(id));
-        let options = new RequestOptions({search: params});
-
-        return this.http.get(constant.NEWS_DETAILS, options)
+        return this.http.get(constant.NEWS_DETAILS + id)
             .map((response: Response) => response.json());
     };
 
@@ -56,10 +56,8 @@ export default class NewsService {
     delete(id: number): Observable<Response> {
 
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
-        let params = new URLSearchParams();
-        params.set("id", String(id));
-        let options = new RequestOptions({headers: headers, search: params});
+        let options = new RequestOptions({headers: headers});
 
-        return this.http.delete(constant.NEWS_URL, options);
+        return this.http.delete(constant.NEWS_URL + "/" + id, options);
     }
 }

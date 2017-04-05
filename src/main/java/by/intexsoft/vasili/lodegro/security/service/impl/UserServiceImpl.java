@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
             User userToUpdate = load(user.username);
             userToUpdate.authorities = user.authorities;
             userToUpdate.enabled = user.enabled;
+            userToUpdate.password = user.password;
             User newUser = save(userToUpdate);
             LOGGER.info("Update successfully: " + newUser.toString());
             return newUser;
