@@ -3,7 +3,6 @@ import {UserService} from "../../service/user.service";
 import {roles} from "../../../app.roles";
 import {Authority} from "../../model/authority.model";
 import User from "../../model/user.model";
-import {Router} from "@angular/router";
 
 @Component({
     selector: 'edit-user',
@@ -11,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class UserEditComponent implements OnInit {
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private userService: UserService) {
     }
 
     @Input() user: User;
@@ -25,11 +24,8 @@ export class UserEditComponent implements OnInit {
         this.userService.loadUserByUsername(this.user.username).subscribe(
             data => {
                 this.userDetails = data;
-                console.log("UserDetails?" + JSON.stringify(data));
-
             });
 
-        // Get all roles and push it into list of roles
         for (let key in roles) {
             this.allRoles.push(roles[key]);
         }
@@ -45,7 +41,7 @@ export class UserEditComponent implements OnInit {
             data => {
                 console.log("Successfully update: " + JSON.stringify(data));
                 this.loading = false;
-                this.router.navigate(["/admin"]);
+                ;
             },
             error => this.logError(error)
         );
