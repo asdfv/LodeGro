@@ -18,7 +18,7 @@ public class News {
     /**
      * News title
      */
-    @Column
+    @Column(nullable = false)
     public String title;
 
     /**
@@ -30,7 +30,7 @@ public class News {
     /**
      * News content
      */
-    @Column
+    @Column(nullable = false)
     public String text;
 
     /**
@@ -91,5 +91,4 @@ public class News {
 
         lastEdit = now;
     }
-
 }

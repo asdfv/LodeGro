@@ -40,7 +40,7 @@ export class UserCreateComponent implements OnInit {
             },
             error => {
                 this.logError(error);
-                this.errorMessage = "User " + user.username + " already exist.";
+                this.errorMessage = "Error saving user " + user.username + ": " + error;
             }
         );
     }

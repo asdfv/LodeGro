@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import News from "../model/news.model";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import NewsService from "../service/news.service";
 import {CanViewService} from "../service/can-view.service";
 import {Response} from "@angular/http";
@@ -12,7 +12,8 @@ import {Response} from "@angular/http";
 export class NewsEditComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private newsService: NewsService,
-                private canViewService: CanViewService) {
+                private canViewService: CanViewService,
+                private router: Router) {
     }
 
     private loading: boolean = true;
@@ -53,7 +54,7 @@ export class NewsEditComponent implements OnInit {
                 console.log("Successfully save/update: " + JSON.stringify(data));
                 this.loading = false;
                 this.successMessage = "Successfully update!";
-                confirm("Successfully update!");
+                this.router.navigate(["/"]);
             },
             error => this.logError(error)
         );

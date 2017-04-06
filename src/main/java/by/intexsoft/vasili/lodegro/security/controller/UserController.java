@@ -28,13 +28,16 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity<User> save(@RequestBody User user) {
         LOGGER.info("Attempt to save user: " + user);
-        if (userService.load(user.username) != null) return new ResponseEntity<>(HttpStatus.CONFLICT);
+        if (userService.load(user.username) != null) {
+            LOGGER.error("Username already exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         try {
             User userToSave = userService.save(user);
             LOGGER.info("Save successfully: " + user);
             return new ResponseEntity<>(userToSave, HttpStatus.CREATED);
         } catch (Exception e) {
-            LOGGER.error("Error while saving user. Duplicate username? " + e.getLocalizedMessage());
+            LOGGER.error("Error while saving user: " + e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

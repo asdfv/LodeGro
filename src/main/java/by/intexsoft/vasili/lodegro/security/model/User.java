@@ -27,20 +27,19 @@ public class User {
     }
 
     @Id
-    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
     /**
      * username
      */
-    @Column
+    @Column(nullable = false)
     public String username;
 
     /**
      * password
      */
-    @Column
+    @Column(nullable = false)
     public String password;
 
     /**

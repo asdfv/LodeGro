@@ -33,9 +33,9 @@ CREATE TABLE users (
     enabled boolean NOT NULL
 );
 
-INSERT INTO users (id, username, password, enabled) VALUES (1, 'adm', 'a', '1');
-INSERT INTO users (id, username, password, enabled) VALUES (2, 'red', 'a', '1');
-INSERT INTO users (id, username, password, enabled) VALUES (3, 'auth', 'a', '1');
+INSERT INTO users (username, password, enabled) VALUES ('adm', 'a', '1');
+INSERT INTO users (username, password, enabled) VALUES ('red', 'a', '1');
+INSERT INTO users (username, password, enabled) VALUES ('auth', 'a', '1');
 
 -- user_authority
 
