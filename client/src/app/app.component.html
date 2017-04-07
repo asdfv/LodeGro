@@ -3,6 +3,7 @@
     <a routerLink="/">Home page</a>
     <a routerLink="/admin" *ngIf="isAdmin()">Admin page</a>
     <a routerLink="/redactor" *ngIf="isRedactor() || isAdmin()" >Redactor page</a>
+    <a routerLink="/newsFuture" *ngIf="isRedactor() || isAdmin()" >Future news</a>
     <a routerLink="/author" *ngIf="isRedactor() || isAdmin() || isAuthor()" >Author page</a>
     <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a>
     <a routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>  {{ getCurrentUsername() }}

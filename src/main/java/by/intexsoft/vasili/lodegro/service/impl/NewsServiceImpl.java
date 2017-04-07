@@ -42,8 +42,13 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public Iterable<News> findApproved() {
-		return newsRepository.findApproved();
+	public Iterable<News> findApprovedAndStarted() {
+		return newsRepository.findApprovedAndStarted();
+	}
+
+	@Override
+	public Iterable<News> findFuture() {
+		return newsRepository.findFuture();
 	}
 
 	@Override

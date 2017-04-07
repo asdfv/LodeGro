@@ -5,6 +5,7 @@ export const constant = {
     NEWS_URL: "/api/news",
     NEWS_ALL: "/api/news/all",
     NEWS_FOR_APPROVING: "/api/news/forApproving",
+    NEWS_FUTURE: "/api/news/future",
     NEWS_DETAILS: "/api/news/",
     SAVED_USER: "currentUser",
     ANONYMOUS_USER: "anon",

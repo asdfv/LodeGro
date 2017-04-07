@@ -28,8 +28,6 @@ public class NewsController {
     /**
      * Save
      *
-     * @param news {@link News}
-     * @return {@link News}
      */
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity<News> save(@RequestBody News news) {
@@ -43,9 +41,6 @@ public class NewsController {
 
     /**
      * Update
-     *
-     * @param news {@link News}
-     * @return {@link News}
      */
     @RequestMapping(method = RequestMethod.PUT)
     private ResponseEntity<News> update(@RequestBody News news) {
@@ -60,20 +55,26 @@ public class NewsController {
 
     /**
      * Get all approved news
-     *
-     * @return list of {@link News}
      */
     @RequestMapping("/all")
     private ResponseEntity<Iterable<News>> searchApprovedNews() {
         LOGGER.debug("Getting all news");
-        Iterable<News> list = newsService.findApproved();
+        Iterable<News> list = newsService.findApprovedAndStarted();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    /**
+     * Get news with startDate later then today
+     */
+    @RequestMapping("/future")
+    private ResponseEntity<Iterable<News>> searchFutureNews() {
+        LOGGER.debug("Getting future news");
+        Iterable<News> list = newsService.findFuture();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     /**
      * Load news for approving
-     *
-     * @return list of {@link News}
      */
     @RequestMapping("/forApproving")
     private ResponseEntity<Iterable<News>> searchNotApprovedNews() {

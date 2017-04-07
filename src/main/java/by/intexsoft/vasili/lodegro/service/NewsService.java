@@ -27,7 +27,12 @@ public interface NewsService {
 	/**
 	 * Find all approved {@link News}
 	 */
-	Iterable<News> findApproved();
+	Iterable<News> findApprovedAndStarted();
+
+	/**
+	 * Get {@link News} with startDate later then today
+	 */
+	Iterable<News> findFuture();
 
 	/**
 	 * Find not approved {@link News}

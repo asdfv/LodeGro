@@ -10,8 +10,6 @@ import {TokenService} from "./token.service";
 @Injectable()
 export class AuthenticationService {
 
-    private LOGIN_URL: string = constant.LOGIN_URL;
-
     constructor(private http: Http,
                 private currentUserService: CurrentUserService,
                 private tokenService: TokenService) {
@@ -21,7 +19,7 @@ export class AuthenticationService {
         const body = JSON.stringify({username: username, password: password});
         const options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json'})});
 
-        return this.http.post(this.LOGIN_URL, body, options)
+        return this.http.post(constant.LOGIN_URL, body, options)
             .map((response: Response) => {
 
                 let token = response.headers.get("Authorization").slice(7);

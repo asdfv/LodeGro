@@ -11,10 +11,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NewsRepository extends JpaRepository<News, Integer> {
 
-    @Query("select new Map(n.id as id, n.title as title, n.description as description, n.createdAt as createdAt, n.createdBy as createdBy, n.startDate as startDate, n.endDate as endDate, n.lastEdit as lastEdit) from News n where n.isApproved = true")
-    Iterable<News> findApproved();
+    @Query("select new Map(n.id as id, n.title as ttle, n.description as description, n.createdAt as createdAt, n.createdBy as createdBy, n.startDate as startDate, n.endDate as endDate, n.lastEdit as lastEdit) from News n where n.isApproved = true and n.startDate <= CURRENT_DATE order by n.createdAt desc")
+    Iterable<News> findApprovedAndStarted();
 
-    @Query("select new Map(n.id as id, n.title as title, n.description as description, n.createdAt as createdAt, n.createdBy as createdBy, n.startDate as startDate, n.endDate as endDate, n.lastEdit as lastEdit) from News n where n.isApproved = false")
+    @Query("select new Map(n.id as id, n.title as title, n.description as description, n.createdAt as createdAt, n.createdBy as createdBy, n.startDate as startDate, n.endDate as endDate, n.lastEdit as lastEdit) from News n where n.isApproved = false order by n.createdAt desc")
     Iterable<News> findForApproving();
 
+    @Query("select new Map(n.id as id, n.title as title, n.description as description, n.createdAt as createdAt, n.createdBy as createdBy, n.startDate as startDate, n.endDate as endDate, n.lastEdit as lastEdit) from News n where n.startDate > CURRENT_DATE order by n.createdAt desc")
+    Iterable<News> findFuture();
 }

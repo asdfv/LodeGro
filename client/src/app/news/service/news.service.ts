@@ -17,6 +17,11 @@ export default class NewsService {
             .map((response: Response) => response.json());
     };
 
+    loadFutureNews(): Observable<News[]> {
+        return this.http.get(constant.NEWS_FUTURE)
+            .map((response: Response) => response.json());
+    };
+
     loadNewsToApproving(): Observable<News[]> {
         let headers = new Headers({'Authorization': this.currentUserService.get().token});
         let options = new RequestOptions({headers: headers});

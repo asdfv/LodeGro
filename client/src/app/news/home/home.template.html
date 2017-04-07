@@ -7,7 +7,7 @@
         <p>
             <span *ngIf="news.lastEdit">Последнее редактирование: {{news.lastEdit | date:'HH:mm / yyyy-MM-dd'}}</span> <br>
             Автор: {{news.createdBy}} <br>
-            Опубликовано: {{ news.createdAt | date:'yyyy-MM-dd'}}
+            Опубликовано: {{ news.startDate | date:'yyyy-MM-dd'}}
         </p>
     </div>
     <a [routerLink]="['/newsDetails', news.id]">Details</a>
