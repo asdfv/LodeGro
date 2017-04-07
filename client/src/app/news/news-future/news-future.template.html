@@ -1,0 +1,17 @@
+<h1>News for future</h1>
+
+<div *ngFor="let news of newsList">
+    <h2>{{ news.title }}</h2>
+    <h3>{{ news.description }} </h3>
+    <div class="created_on">
+        <p>
+            <span *ngIf="news.lastEdit">Последнее редактирование: {{news.lastEdit | date:'HH:mm / yyyy-MM-dd'}}</span> <br>
+            Автор: {{news.createdBy}} <br>
+            Создано: {{ news.createdAt | date:'yyyy-MM-dd'}} <br>
+            Дата для публикации: {{ news.startDate | date:'yyyy-MM-dd'}}
+        </p>
+    </div>
+    <a [routerLink]="['/newsDetails', news.id]">Details</a>
+    <br>
+    <hr>
+</div>
