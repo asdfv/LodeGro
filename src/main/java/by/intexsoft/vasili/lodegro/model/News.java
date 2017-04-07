@@ -1,7 +1,6 @@
 package by.intexsoft.vasili.lodegro.model;
 
 import javax.persistence.*;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -43,7 +42,7 @@ public class News {
      * Date of creating news
      */
     @Column(name = "created_at")
-    public Date createdAt;
+    public Date createdAt = new Date();
 
     /**
      * Author
@@ -55,7 +54,7 @@ public class News {
      * Date to publish news
      */
     @Column(name = "start_date")
-    public Date startDate;
+    public Date startDate = new Date();
 
     /**
      * Date to move news in archive
@@ -69,21 +68,21 @@ public class News {
     @Column(name = "last_edit")
     public Date lastEdit;
 
-    @PrePersist
-    protected void onCreate() {
-
-        Date now = new Date();
-
-        Calendar c = Calendar.getInstance();
-        c.setTime(now);
-        c.add(Calendar.YEAR, 1);
-        Date nowAddYear = c.getTime();
-
-        startDate = now;
-        endDate = nowAddYear;
-        createdAt = now;
-        lastEdit = now;
-    }
+//    @PrePersist
+//    protected void onCreate() {
+//
+//        Date now = new Date();
+//
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(now);
+//        c.add(Calendar.YEAR, 1);
+//        Date nowAddYear = c.getTime();
+//
+//        startDate = now;
+//        endDate = nowAddYear;
+//        createdAt = now;
+//        lastEdit = now;
+//    }
 
     @PreUpdate
     protected void onUpdate() {

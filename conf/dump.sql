@@ -63,11 +63,11 @@ CREATE TABLE news (
     description text NOT NULL,
     text text NOT NULL,
     is_approved boolean DEFAULT false,
-    created_at TIMESTAMP DEFAULT now(),
+    created_at TIMESTAMP DEFAULT CURRENT_DATE,
     created_by VARCHAR(64),
-    start_date TIMESTAMP DEFAULT now(),
-    end_date TIMESTAMP DEFAULT now() + interval '1 year',
-    last_edit TIMESTAMP DEFAULT now()
+    start_date TIMESTAMP DEFAULT CURRENT_DATE,
+    end_date TIMESTAMP DEFAULT CURRENT_DATE + interval '1 year',
+    last_edit TIMESTAMP DEFAULT CURRENT_DATE
     );
 
 INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Скидки в филиалах «ЛОДЭ» в Гродно. ', 'Описание новости на несколько строчек', 'С 14 по 31 марта в филиалах в Гродно скидка 80% на постановку диагностических кожных скарификационных тестов.');

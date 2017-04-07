@@ -22,10 +22,12 @@ import {AuthorComponent} from "./news/author/author.component";
 import {NewsEditComponent} from "./news/news-edit/news-edit.component";
 import {NewsDetailsComponent} from "./news/news-details/news-details.component";
 import {UserCreateComponent} from "./news/admin/user-create/user-create.component";
+import {DatepickerModule} from "angular2-material-datepicker";
 
 @NgModule({
     imports: [
         BrowserModule,
+        DatepickerModule,
         FormsModule,
         HttpModule,
         AuthModule,

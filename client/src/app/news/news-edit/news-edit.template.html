@@ -20,6 +20,10 @@
             <textarea id="content" name="text" [(ngModel)]="news.text"> {{ news.text }} </textarea>
         </label>
         <br>
+        <material-datepicker [(date)]="news.startDate"></material-datepicker>
+        <br>
+        {{ news.startDate | date:'yyyy-MM-dd' }}
+        <br>
         <label *ngIf="isRedactor()">
             Approve
             <br>
@@ -35,4 +39,5 @@
 
     <div> {{ errorMessage }}</div>
     <div> {{ successMessage }}</div>
+    <pre>Send data: {{ newsForm.value | json }}</pre>
 </div>

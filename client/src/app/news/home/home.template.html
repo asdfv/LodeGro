@@ -6,7 +6,8 @@
     <div class="created_on">
         <p>
             Последнее редактирование: {{news.lastEdit | date:'HH:mm / yyyy-MM-dd'}} <br>
-            Автор: {{news.createdBy}}
+            Автор: {{news.createdBy}} <br>
+            StartDate: {{ news.startDate | date:'yyyy-MM-dd'}}
         </p>
     </div>
     <a [routerLink]="['/newsDetails', news.id]">Details</a>

@@ -22,6 +22,7 @@ export class NewsEditComponent implements OnInit {
     private successMessage: string = "";
 
     ngOnInit() {
+        this.news.startDate = new Date();
         let newsId: number;
         this.route.params.subscribe(
             (params: Params) => {

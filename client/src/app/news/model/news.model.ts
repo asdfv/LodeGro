@@ -4,11 +4,11 @@ export default class News {
     description: string;
     text: string;
     isApproved: boolean = false;
-    createdAt: number;
+    createdAt: Date;
     createdBy: string;
-    startDate: number;
-    endDate: number;
-    lastEdit: number;
+    startDate: Date;
+    endDate: Date;
+    lastEdit: Date;
 
 
     constructor(title: string, description: string, text: string) {
