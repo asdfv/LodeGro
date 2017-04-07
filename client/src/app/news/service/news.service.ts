@@ -25,11 +25,6 @@ export default class NewsService {
     };
 
     loadNewsDetails(id: number): Observable<News> {
-        //
-        // let params = new URLSearchParams();
-        // params.set("id", String(id));
-        // let options = new RequestOptions({search: params});
-
         return this.http.get(constant.NEWS_DETAILS + id)
             .map((response: Response) => response.json());
     };

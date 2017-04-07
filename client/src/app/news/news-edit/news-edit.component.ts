@@ -22,7 +22,6 @@ export class NewsEditComponent implements OnInit {
     private successMessage: string = "";
 
     ngOnInit() {
-        this.news.startDate = new Date();
         let newsId: number;
         this.route.params.subscribe(
             (params: Params) => {
@@ -30,6 +29,7 @@ export class NewsEditComponent implements OnInit {
                 if (!isNaN(newsId)) {
                     this.newsService.loadNewsDetails(newsId).subscribe(
                         (data: News) => {
+                            data.startDate = new Date(data.startDate);
                             this.news = data;
                             this.loading = false;
                         }
@@ -67,7 +67,7 @@ export class NewsEditComponent implements OnInit {
             data => {
                 console.log("Successfully save: " + data.title);
                 this.loading = false;
-                this.successMessage = "Successfully saved!";
+                this.router.navigate(["/"]);
             },
             error => this.logError(error)
         );
@@ -79,7 +79,7 @@ export class NewsEditComponent implements OnInit {
             (response: Response) => {
                 console.log("Deleting response status: " + response.status);
                 this.loading = false;
-                this.successMessage = "Deleting complete!";
+                this.router.navigate(["/"]);
             },
             error => this.logError(error)
         )

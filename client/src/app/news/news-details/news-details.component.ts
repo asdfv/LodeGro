@@ -21,20 +21,17 @@ export class NewsDetailsComponent implements OnInit {
         this.route.params.subscribe(
             (params: Params) => {
                 newsId = +params["id"];
-                console.log("Catch param in NewsDetailsComponent: " + newsId);
             }
         );
         this.newsService.loadNewsDetails(newsId).subscribe(
             (data: News) => {
-                console.log("loadNewsDetails started with id = " + newsId)
                 this.news = data;
-                console.log("loadNewsDetails: data is: " + JSON.stringify(data));
                 this.loading = false;
             }
         );
     }
 
     canEdit(): boolean {
-        return (this.canViewService.isRedactor() || this.canViewService.isAuthor());
+        return (this.canViewService.isRedactor());
     }
 }

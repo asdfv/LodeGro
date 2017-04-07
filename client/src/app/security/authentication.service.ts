@@ -32,7 +32,7 @@ export class AuthenticationService {
                     let user = new User(0, username, stringAuthorities, token);
                     this.currentUserService.set(user);
                     let currentUser = this.currentUserService.get();
-                    console.log("Saved to storage: " + currentUser.username + " with roles: " + currentUser.authorities + " and token: " + currentUser.token);
+                    console.log("Successfully login: " + currentUser.username + " with roles: " + currentUser.authorities);
                     return true;
                 } else {
                     return false;

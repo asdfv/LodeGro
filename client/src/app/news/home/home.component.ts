@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
         this.newsService.loadApprovedNews().subscribe(
 
             (data: News[]) => {
-                console.log("data from HomeComponent before parsing: " + JSON.stringify(data));
                 this.newsList = data
             }
         );

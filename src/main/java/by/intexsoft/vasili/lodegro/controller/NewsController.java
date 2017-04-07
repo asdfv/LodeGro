@@ -49,14 +49,8 @@ public class NewsController {
      */
     @RequestMapping(method = RequestMethod.PUT)
     private ResponseEntity<News> update(@RequestBody News news) {
-        News newsToUpdate = null;
         try {
-            newsToUpdate = newsService.findOne(news.id);
-            newsToUpdate.title = news.title;
-            newsToUpdate.description = news.description;
-            newsToUpdate.text = news.text;
-            newsToUpdate.isApproved = news.isApproved;
-            return new ResponseEntity<>(newsService.save(newsToUpdate), HttpStatus.OK);
+            return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
         } catch (Exception e) {
             LOGGER.error("News not found: " + e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

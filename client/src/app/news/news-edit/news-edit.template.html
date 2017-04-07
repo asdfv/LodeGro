@@ -5,7 +5,7 @@
 
         <label>
             Title <br>
-            <textarea id="title" name="title" [(ngModel)]="news.title"> {{ news.title }} </textarea>
+            <textarea id="title" name="title" [(ngModel)]="news.title" required minlength="4" > {{ news.title }} </textarea>
         </label>
         <br>
         <label>Description
@@ -17,12 +17,10 @@
         <label>
             Text
             <br>
-            <textarea id="content" name="text" [(ngModel)]="news.text"> {{ news.text }} </textarea>
+            <textarea id="content" name="text" [(ngModel)]="news.text" required minlength="4"> {{ news.text }} </textarea>
         </label>
         <br>
         <material-datepicker [(date)]="news.startDate"></material-datepicker>
-        <br>
-        {{ news.startDate | date:'yyyy-MM-dd' }}
         <br>
         <label *ngIf="isRedactor()">
             Approve
