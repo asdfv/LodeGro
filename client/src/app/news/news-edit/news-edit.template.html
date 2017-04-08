@@ -5,8 +5,10 @@
 
         <label>
             Title <br>
-            <textarea id="title" name="title" [(ngModel)]="news.title" required minlength="4" > {{ news.title }} </textarea>
+            <textarea id="title" name="title" [(ngModel)]="news.title" required
+                      minlength="4"> {{ news.title }} </textarea>
         </label>
+        <br>
         <br>
         <label>Description
             <br>
@@ -14,19 +16,26 @@
                       [(ngModel)]="news.description"> {{ news.description }} </textarea>
         </label>
         <br>
+        <br>
         <label>
             Text
             <br>
-            <textarea id="content" name="text" [(ngModel)]="news.text" required minlength="4"> {{ news.text }} </textarea>
+            <textarea id="content" name="text" [(ngModel)]="news.text" required
+                      minlength="4"> {{ news.text }} </textarea>
         </label>
         <br>
-        <material-datepicker [(date)]="news.startDate"></material-datepicker>
+        <br>
+        <label>
+            Date to publish<br>
+            <material-datepicker [(date)]="news.startDate"></material-datepicker>
+        </label>
+        <br>
         <br>
         <label *ngIf="isRedactor()">
             Approve
-            <br>
-            <input type="checkbox" id="approved" name="isApproved" [(ngModel)]="news.isApproved"> {{ news.isApproved }}
+            <input type="checkbox" id="approved" name="isApproved" [(ngModel)]="news.isApproved">
         </label>
+        <br>
         <br>
         <button type="submit" (click)="updateOrSave()" [disabled]="loading">Save</button>
         <img *ngIf="loading"
