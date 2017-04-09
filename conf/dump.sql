@@ -65,7 +65,7 @@ CREATE TABLE news (
     is_approved boolean DEFAULT false,
     created_at TIMESTAMP DEFAULT CURRENT_DATE,
     created_by VARCHAR(64),
-    start_date TIMESTAMP DEFAULT CURRENT_DATE,
+    start_date date DEFAULT CURRENT_DATE,
     last_edit TIMESTAMP
     );
 

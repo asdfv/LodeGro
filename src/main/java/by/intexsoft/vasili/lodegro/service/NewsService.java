@@ -15,7 +15,7 @@ public interface NewsService {
 
 	/**
 	 * Find all {@link News}
-	 */	
+	 */
 	Iterable<News> findAll();
 
 	/**

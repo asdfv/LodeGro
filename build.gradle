@@ -53,4 +53,5 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework:spring-test:4.3.6.RELEASE'
+    testCompile 'com.google.collections:google-collections:1.0'
 }

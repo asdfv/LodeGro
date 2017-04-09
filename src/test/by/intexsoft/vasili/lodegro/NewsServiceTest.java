@@ -6,6 +6,7 @@ import by.intexsoft.vasili.lodegro.config.SecurityConfig;
 import by.intexsoft.vasili.lodegro.config.WebConfig;
 import by.intexsoft.vasili.lodegro.model.News;
 import by.intexsoft.vasili.lodegro.service.NewsService;
+import com.google.common.collect.Iterators;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,8 +17,10 @@ import org.springframework.test.context.web.AnnotationConfigWebContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Date;
+import java.util.Iterator;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -55,14 +58,29 @@ public class NewsServiceTest {
         assertNotNull(newsService.findOne(id));
         newsService.delete(id);
     }
-//
-//    @Test
-//    public void addToApprovedTest() {
-//        Iterable<News> newsList = newsService.findApprovedAndStarted();
-//        int count = newsList.
-//        news.startDate = TODAY;
-//        news.isApproved = true;
-//        newsService.save(news);
-//        assertNotNull(newsService.);
-//    }
+
+    @Test
+    public void addToApprovedTest() {
+        Iterable<News> newsListBefore = newsService.findApprovedAndStarted();
+        int sizeBefore = getSize(newsListBefore);
+        System.out.println("Size before: " + sizeBefore);
+
+
+        news.startDate = TODAY;
+        news.isApproved = true;
+        int id = newsService.save(news).id;
+
+        Iterable<News> newsListAfter = newsService.findApprovedAndStarted();
+        int sizeAfter = getSize(newsListAfter);
+        System.out.println("Size after: " + sizeAfter);
+
+        assertTrue(null, sizeAfter == sizeBefore + 1);
+
+        newsService.delete(id);
+    }
+
+    private int getSize(Iterable<News> list) {
+        Iterator<News> iterator = list.iterator();
+        return Iterators.size(iterator);
+    }
 }
