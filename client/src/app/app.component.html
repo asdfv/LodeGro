@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<h1 id="title">{{ title }}</h1>
 <nav>
     <a routerLink="/">Home page</a>
     <a routerLink="/admin" *ngIf="isAdmin()">Admin page</a>
@@ -6,6 +6,6 @@
     <a routerLink="/newsFuture" *ngIf="isRedactor() || isAdmin()" >Future news</a>
     <a routerLink="/author" *ngIf="isRedactor() || isAdmin() || isAuthor()" >Author page</a>
     <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a>
-    <a routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>  {{ getCurrentUsername() }}
+    <a id="loginLink" routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>  {{ getCurrentUsername() }}
 </nav>
 <router-outlet></router-outlet>

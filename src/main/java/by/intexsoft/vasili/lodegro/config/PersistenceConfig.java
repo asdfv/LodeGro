@@ -3,7 +3,6 @@ package by.intexsoft.vasili.lodegro.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -24,7 +23,6 @@ import static org.springframework.orm.jpa.vendor.Database.POSTGRESQL;
         "by.intexsoft.vasili.lodegro.repository",
         "by.intexsoft.vasili.lodegro.security.repository"
 })
-@PropertySource("classpath:application.properties")
 public class PersistenceConfig {
 
     @Value("${datasource.driver-class-name}")

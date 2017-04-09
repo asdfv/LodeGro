@@ -57,37 +57,14 @@ public class News {
     public Date startDate = new Date();
 
     /**
-     * Date to move news in archive
-     */
-    @Column(name = "end_date")
-    public Date endDate;
-
-    /**
      * Date of last editing
      */
     @Column(name = "last_edit")
     public Date lastEdit;
 
-//    @PrePersist
-//    protected void onCreate() {
-//
-//        Date now = new Date();
-//
-//        Calendar c = Calendar.getInstance();
-//        c.setTime(now);
-//        c.add(Calendar.YEAR, 1);
-//        Date nowAddYear = c.getTime();
-//
-//        startDate = now;
-//        endDate = nowAddYear;
-//        createdAt = now;
-//        lastEdit = now;
-//    }
-
     @PreUpdate
     protected void onUpdate() {
         Date now = new Date();
-
         lastEdit = now;
     }
 }

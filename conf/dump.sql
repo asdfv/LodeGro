@@ -66,12 +66,11 @@ CREATE TABLE news (
     created_at TIMESTAMP DEFAULT CURRENT_DATE,
     created_by VARCHAR(64),
     start_date TIMESTAMP DEFAULT CURRENT_DATE,
-    end_date TIMESTAMP DEFAULT CURRENT_DATE + interval '1 year',
-    last_edit TIMESTAMP DEFAULT CURRENT_DATE
+    last_edit TIMESTAMP
     );
---
--- INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Скидки в филиалах «ЛОДЭ» в Гродно. ', 'Описание новости на несколько строчек', 'С 14 по 31 марта в филиалах в Гродно скидка 80% на постановку диагностических кожных скарификационных тестов.');
--- INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Итоги прямой линии с гинекологом-эндокринологом, репродуктологом! ', 'Описание новости на несколько строчек', 'Подведены итоги прямой линии по лечению бесплодия и ЭКО!');
--- INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Временные затруднения при обращении к online-администратору с мобильных устройств.', 'Описание новости на несколько строчек', 'Альтернативные способы обращения в call-центр.');
--- INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'С 8 марта, милые женщины! ', 'Описание новости на несколько строчек', 'Центр «ЛОДЭ» поздравляет прекрасную половину человечества с женским днем!');
--- INSERT INTO news (created_by, title, description, text, is_approved) VALUES ('author' ,'Готовим ножки к лету! ', 'Описание новости на несколько строчек', 'Ранняя весна, как отмечают хирурги медицинского центра «ЛОДЭ», – это лучшее время для выполнения склеротерапии и лазерной коагуляции вен.', TRUE);
+
+INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Скидки в филиалах «ЛОДЭ» в Гродно. ', 'Описание новости на несколько строчек', 'С 14 по 31 марта в филиалах в Гродно скидка 80% на постановку диагностических кожных скарификационных тестов.');
+INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Итоги прямой линии с гинекологом-эндокринологом, репродуктологом! ', 'Описание новости на несколько строчек', 'Подведены итоги прямой линии по лечению бесплодия и ЭКО!');
+INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'Временные затруднения при обращении к online-администратору с мобильных устройств.', 'Описание новости на несколько строчек', 'Альтернативные способы обращения в call-центр.');
+INSERT INTO news (created_by, title, description, text) VALUES ('author' ,'С 8 марта, милые женщины! ', 'Описание новости на несколько строчек', 'Центр «ЛОДЭ» поздравляет прекрасную половину человечества с женским днем!');
+INSERT INTO news (created_by, title, description, text, is_approved) VALUES ('author' ,'Готовим ножки к лету! ', 'Описание новости на несколько строчек', 'Ранняя весна, как отмечают хирурги медицинского центра «ЛОДЭ», – это лучшее время для выполнения склеротерапии и лазерной коагуляции вен.', TRUE);

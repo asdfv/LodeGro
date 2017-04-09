@@ -1,11 +1,11 @@
-import {Config, ProtractorBrowser} from 'protractor';
+import {Config, ProtractorBrowser} from "protractor";
 
 export let config: Config  = {
     framework: 'jasmine',
     capabilities: {
         browserName: 'firefox'
     },
-    specs: [ './src/test/e2e/app-spec.ts' ],
+    specs: [ './src/test/e2e/app-spec.js' ],
     seleniumAddress: 'http://localhost:4444/wd/hub',
     jasmineNodeOpts: {
         showColors: true,
