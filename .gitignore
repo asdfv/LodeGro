@@ -16,4 +16,6 @@
 *.map
 *.js
 !/client/webpack.config.js
+!/client/protractor.conf.js
+!/client/src/e2e/app-spec.js
 *.log

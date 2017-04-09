@@ -2,10 +2,11 @@
   "name": "user-app-angular-2",
   "version": "1.0.0",
   "scripts": {
-    "tsc": "tsc -p src/",
     "build": "webpack --progress",
     "build:prod": "webpack -p --progress",
-    "serv": "webpack-dev-server --inline --progress"
+    "serv": "webpack-dev-server --inline --progress",
+    "selen": "webdriver-manager start",
+    "test": "protractor protractor.conf.js"
   },
   "dependencies": {
     "@angular/common": "~2.4.8",
