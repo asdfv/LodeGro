@@ -1,18 +1,21 @@
 describe('login page', () => {
     it('test login', () => {
 
-        browser.get('http://localhost:3000/');
+        browser.get('http://localhost:3000/#/login');
 
-        let h1 = element(by.css("h1"));
         // browser.pause();
 
-        // let loginLink = element(by.css("h1"));
-        // let username = element(by.id('username'));
-        // let password = element(by.id('password'));
-        // let loginButton = element(by.id('loginButton'));
-        //
-        //
-        // loginLink.click();
+        let username = element(by.id('username'));
+        let password = element(by.id('password'));
+        let loginButton = element(by.id('loginButton'));
+
+        username.sendKeys("adm");
+        password.sendKeys("a");
+
+        loginButton.click();
+
+        expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#/');
+
         // browser.driver.sleep(5000);
         // browser.pause();
         // username.sendKeys("adm");
