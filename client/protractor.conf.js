@@ -3,7 +3,7 @@ exports.config = {
     capabilities: {
         browserName: 'chrome'
     },
-    specs: ['./src/e2e/app-spec.js'],
+    specs: ['./src/e2e/*/*.js'],
     seleniumAddress: 'http://localhost:4444/wd/hub',
     jasmineNodeOpts: {
         showColors: true,
@@ -12,6 +12,6 @@ exports.config = {
     onPrepare: function () {
         var globals = require('protractor');
         var browser = globals.browser;
-        browser.manage().window().maximize();
+        browser.driver.manage().window().setSize(1600, 800);
     }
 };

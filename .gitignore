@@ -17,5 +17,6 @@
 *.js
 !/client/webpack.config.js
 !/client/protractor.conf.js
-!/client/src/e2e/app-spec.js
 *.log
+!/client/src/e2e/home/home.spec.js
+!/client/src/e2e/login/login.spec.js
