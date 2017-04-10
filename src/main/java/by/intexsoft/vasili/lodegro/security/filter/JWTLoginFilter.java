@@ -27,8 +27,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     /**
      * Constructor
-     * @param url
-     * @param authManager
      */
     public JWTLoginFilter(String url, AuthenticationManager authManager) {
         super(new AntPathRequestMatcher(url));
@@ -37,11 +35,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     /**
      * @see AbstractAuthenticationProcessingFilter
-     * @param req
-     * @param res
-     * @throws AuthenticationException
-     * @throws IOException
-     * @throws ServletException
      */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
@@ -57,12 +50,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
     /**
      * @see AbstractAuthenticationProcessingFilter
-     * @param req
-     * @param res
-     * @param chain
-     * @param auth
-     * @throws IOException
-     * @throws ServletException
      */
     @Override
     protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain, Authentication auth)

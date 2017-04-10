@@ -18,10 +18,14 @@
     "@angular/platform-browser-dynamic": "~2.4.8",
     "@angular/router": "~3.4.8",
     "@angular/upgrade": "~2.4.8",
+    "@types/core-js": "^0.9.41",
+    "@types/node": "^7.0.12",
     "angular2-jwt": "^0.1.28",
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.2.0",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
