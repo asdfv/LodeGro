@@ -7,7 +7,6 @@ export default class News {
     createdAt: Date;
     createdBy: string;
     startDate: Date;
-    endDate: Date;
     lastEdit: Date;
 
 

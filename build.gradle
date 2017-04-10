@@ -2,17 +2,17 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'idea'
 
-//task buildWeb(type:Exec) {
-//	description = 'Build webapp with webpack and npm.'
-//  	workingDir = file('client/')
-//  	commandLine = ['cmd', '/c', 'npm run build']
-//}
-//
-//task npmInstall(type:Exec) {
-//    description = 'Instal npm dependensies.'
-//    workingDir = file('client/')
-//    commandLine = ['cmd', '/c', 'npm install']
-//}
+task buildWeb(type:Exec) {
+	description = 'Build webapp with webpack and npm.'
+  	workingDir = file('client/')
+  	commandLine = ['cmd', '/c', 'npm run build']
+}
+
+task npmInstall(type:Exec) {
+    description = 'Instal npm dependensies.'
+    workingDir = file('client/')
+    commandLine = ['cmd', '/c', 'npm install']
+}
 task deploy(type:Exec) {
     description = 'Deploy webapp and run Tomcat using deploy.bat.'
     commandLine = ['cmd', '/c', 'deploy.cmd']
@@ -20,13 +20,13 @@ task deploy(type:Exec) {
 
 war {
     baseName = 'lodegro'
-//    from('/client') {
-//        include 'index.html'
-//        include 'bundles/'
-//    }
+    from('/client') {
+        include 'index.html'
+        include 'bundles/'
+    }
 }
 
-//war.dependsOn buildWeb
+war.dependsOn buildWeb
 deploy.dependsOn build
 
 sourceCompatibility = 1.8

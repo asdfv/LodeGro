@@ -38,7 +38,6 @@ public class PersistenceConfig {
 
     /**
      * Connection settings
-     *
      * @return DataSource
      */
     @Bean
@@ -55,7 +54,6 @@ public class PersistenceConfig {
 
     /**
      * JPA provider
-     *
      * @return JpaVendorAdapter
      */
     @Bean
@@ -68,7 +66,6 @@ public class PersistenceConfig {
 
     /**
      * Manager for entities
-     *
      * @return LocalContainerEntityManagerFactoryBean
      */
     @Bean

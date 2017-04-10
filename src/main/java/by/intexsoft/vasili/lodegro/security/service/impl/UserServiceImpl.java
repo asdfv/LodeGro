@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
 
     /**
      * Load user by username
-     * @param username
      * @return {@link User}
      */
     @Override
@@ -74,8 +73,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * Delete iser by id from db
-     * @param id
+     * Delete user by id from db
      */
     @Override
     public void delete(int id) {

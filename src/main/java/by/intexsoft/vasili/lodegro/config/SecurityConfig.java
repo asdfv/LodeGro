@@ -33,12 +33,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/news/all", "/api/news/*").permitAll()
-
                 .antMatchers(HttpMethod.GET, "/api/news/forApproving").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
                 .antMatchers(HttpMethod.POST, "/api/news").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
                 .antMatchers(HttpMethod.PUT, "/api/news").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
                 .antMatchers(HttpMethod.DELETE, "/api/news/*").hasAnyAuthority("ROLE_AUTHOR", "ROLE_REDACTOR")
-
                 .antMatchers("/api/**").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()

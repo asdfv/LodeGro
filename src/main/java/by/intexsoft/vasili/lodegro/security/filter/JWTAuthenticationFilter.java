@@ -23,11 +23,6 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
 
     /**
      * @see GenericFilterBean
-     * @param request
-     * @param response
-     * @param filterChain
-     * @throws IOException
-     * @throws ServletException
      */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {

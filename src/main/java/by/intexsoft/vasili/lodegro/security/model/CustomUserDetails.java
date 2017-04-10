@@ -12,7 +12,6 @@ public class CustomUserDetails extends User implements UserDetails {
 
     /**
      * Constructor for {@link by.intexsoft.vasili.lodegro.security.service.CustomUserDetailService}
-     * @param user
      */
     public CustomUserDetails(User user) {
         super(user);

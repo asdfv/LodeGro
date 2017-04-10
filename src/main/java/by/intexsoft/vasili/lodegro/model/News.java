@@ -62,6 +62,9 @@ public class News {
     @Column(name = "last_edit")
     public Date lastEdit;
 
+    /**
+     * Set edit data on entity is updated
+     */
     @PreUpdate
     protected void onUpdate() {
         Date now = new Date();

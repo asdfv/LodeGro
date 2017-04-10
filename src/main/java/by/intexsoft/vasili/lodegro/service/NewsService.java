@@ -19,7 +19,7 @@ public interface NewsService {
 	Iterable<News> findAll();
 
 	/**
-	 * Save Eintity to DB
+	 * Save Entity to DB
 	 * @return saved {@link News}
 	 */
 	News save(News news);

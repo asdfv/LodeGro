@@ -17,7 +17,6 @@ public class User {
 
     /**
      * Constructor for {@link CustomUserDetails}
-     * @param user
      */
     public User(User user) {
         this.username = user.username;
@@ -26,6 +25,9 @@ public class User {
         this.authorities = user.authorities;
     }
 
+    /**
+     * Identification for {@link User}
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -59,6 +61,9 @@ public class User {
     )
     public Set<Authority> authorities;
 
+    /**
+     * Convenient for logging view
+     */
     @Override
     public String toString() {
         return "{" +

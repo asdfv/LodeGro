@@ -1,11 +1,13 @@
-<h1 id="title">{{ title }}</h1>
-<nav>
-    <a routerLink="/">Home page</a>
-    <a routerLink="/admin" *ngIf="isAdmin()">Admin page</a>
-    <a routerLink="/redactor" *ngIf="isRedactor() || isAdmin()" >Redactor page</a>
-    <a routerLink="/newsFuture" *ngIf="isRedactor() || isAdmin()" >Future news</a>
-    <a routerLink="/author" *ngIf="isRedactor() || isAdmin() || isAuthor()" >Author page</a>
-    <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a>
-    <a id="loginLink" routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a>  {{ getCurrentUsername() }}
-</nav>
+<h1 id="title">LODE Grodno News</h1>
+
+<ul>
+    <li> <a class="active" routerLink="/">Home page</a>
+    <li> <a routerLink="/admin" *ngIf="isAdmin()">Admin page</a></li>
+    <li> <a routerLink="/redactor" *ngIf="isRedactor() || isAdmin()" >Redactor page</a></li>
+    <li> <a routerLink="/newsFuture" *ngIf="isRedactor() || isAdmin()" >Future news</a></li>
+    <li> <a routerLink="/author" *ngIf="isRedactor() || isAdmin() || isAuthor()" >Author page</a></li>
+    <li> <a routerLink="/login" *ngIf="!isLogIn()">LogIn</a></li>
+    <li> <a id="loginLink" routerLink="/login" *ngIf="isLogIn()" (click)="logOut()">LogOut</a> </li>
+    <li class="currentUser"> <a>You logIn as {{ getCurrentUsername() }}</a> </li>
+</ul>
 <router-outlet></router-outlet>

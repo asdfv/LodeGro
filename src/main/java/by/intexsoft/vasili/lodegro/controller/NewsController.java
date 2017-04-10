@@ -27,7 +27,6 @@ public class NewsController {
 
     /**
      * Save
-     *
      */
     @RequestMapping(method = RequestMethod.POST)
     private ResponseEntity<News> save(@RequestBody News news) {
@@ -35,7 +34,7 @@ public class NewsController {
             return new ResponseEntity<>(newsService.save(news), HttpStatus.CREATED);
         } catch (Exception e) {
             LOGGER.error("Save news error");
-            return new ResponseEntity<News>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -50,7 +49,6 @@ public class NewsController {
             LOGGER.error("News not found: " + e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     /**
@@ -85,8 +83,6 @@ public class NewsController {
 
     /**
      * Load news by id
-     *
-     * @param id
      * @return {@link News}
      */
     @RequestMapping(value = "/{id}")
@@ -102,8 +98,6 @@ public class NewsController {
 
     /**
      * Delete news by id
-     *
-     * @param id
      * @return {@link News}
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

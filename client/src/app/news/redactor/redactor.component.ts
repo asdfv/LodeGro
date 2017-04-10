@@ -12,13 +12,13 @@ export class RedactorComponent implements OnInit {
     }
 
     private newsList: News[] = [];
-    private loadning = true;
+    private loading = true;
 
     ngOnInit(): void {
         this.newsService.loadNewsToApproving().subscribe(
             (data: News[]) => {
                 this.newsList = data;
-                this.loadning = false;
+                this.loading = false;
             }
         );
     }

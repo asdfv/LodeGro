@@ -36,9 +36,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.template.html',
             chunksSortMode: function (chunk1, chunk2) { // sort function
-                var orders = ['polyfill', 'app']; // Necessary order
-                var order1 = orders.indexOf(chunk1.names[0]);
-                var order2 = orders.indexOf(chunk2.names[0]);
+                let orders = ['polyfill', 'app']; // Necessary order
+                let order1 = orders.indexOf(chunk1.names[0]);
+                let order2 = orders.indexOf(chunk2.names[0]);
                 return order1 - order2;
             }
         })
