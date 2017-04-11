@@ -1,24 +1,24 @@
-<h1>Admin page title</h1>
+<h1>User account administration</h1>
 
 <div>
-    <h2>List of users</h2>
     <table>
         <tr>
             <th>id</th>
             <th>username</th>
             <th>roles</th>
+            <th>actions</th>
         </tr>
         <tr *ngFor="let user of users">
             <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
             <td>{{ getRoles(user) }}</td>
             <td>
-                <button [routerLink]="['/userEdit', user.username]">Edit</button>
-                <button (click)="delete(user.id)">Delete</button>
+                <button class="button button_blue" [routerLink]="['/userEdit', user.username]">Edit</button>
+                <button class="button button_red" (click)="delete(user.id)">Delete</button>
             </td>
         </tr>
     </table>
-    <img *ngIf="loading" [src]="LOADING_ICON"/>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
     <div> {{ errorMessage }}</div>
-    <button [routerLink]="['/userCreate']">Add</button>
+    <button class="button button_blue" [routerLink]="['/userCreate']">Add</button>
 </div>

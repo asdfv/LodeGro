@@ -1,20 +1,19 @@
-<div>
-    <h2>Login</h2>
-    <form (ngSubmit) = login()>
-        <div>
-            <label>Username</label>
-            <input id="username" [(ngModel)]="credentials.username" placeholder="username" name="username" type="text" required/>
-            <span>{{ credentials.username }}</span>
-        </div>
-        <div>
-            <label>Password</label>
-            <input id="password" [(ngModel)]="credentials.password" placeholder="password" name="password" type="password" required/>
-            <span>{{ credentials.password }}</span>
-        </div>
+<form class="form_login" (ngSubmit)=login()>
+    <div>
+        <label>Username</label>
+        <input id="username" [(ngModel)]="credentials.username" placeholder="username" name="username" type="text"
+               required/>
+        <span>{{ credentials.username }}</span>
+    </div>
+    <div>
+        <label>Password</label>
+        <input id="password" [(ngModel)]="credentials.password" placeholder="password" name="password" type="password"
+               required/>
+        <span>{{ credentials.password }}</span>
+    </div>
 
-        <div>
-            <button id="loginButton" type="submit">Login</button>
-        </div>
-    </form>
-    <div> {{ error }} </div>
-</div>
+    <div>
+        <button id="loginButton" type="submit">Login</button>
+    </div>
+</form>
+<div class="error_message"> {{ error }}</div>

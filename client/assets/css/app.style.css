@@ -1,0 +1,63 @@
+input, textarea {
+    outline: none;
+    border: solid 1px #f2f2f2;
+}
+
+body, html {
+    background-color: #edffda;
+    font-family: sans-serif, 'trebuchet ms', 'lucida grande', 'lucida sans unicode', arial, helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.created_on {
+    font: normal 75% 'century gothic', arial, sans-serif;
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button_green {
+    background-color: #4CAF50;
+    color: white;
+}
+.button_green:hover {
+    background-color: white;
+    color: black;
+}
+
+.button_blue {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button_blue:hover {
+    background-color: white;
+    color: black;
+}
+
+.button_red {
+    background-color: #f44336;
+    color: white;
+}
+
+.button_red:hover {
+    background-color: white;
+    color: black;
+}
+.error_message {
+    font: normal 125% 'century gothic', arial, sans-serif;
+    color: red;
+    text-align: center;
+}
+
+

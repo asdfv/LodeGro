@@ -4,18 +4,22 @@ import User from "../model/user.model";
 
 @Component({
     templateUrl: "./admin.template.html",
+    styleUrls: ["./admin.style.css"]
 })
 export class AdminComponent implements OnInit {
     constructor(private userService: UserService) {
     };
 
     private users: User[];
-    private loading: boolean = false;
+    private loading: boolean = true;
     private errorMessage: string = "";
 
     ngOnInit(): void {
         this.userService.loadAllUsers().subscribe(
-            data => this.users = data
+            data => {
+                this.users = data;
+                this.loading = false;
+            }
         );
     }
 

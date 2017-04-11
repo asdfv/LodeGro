@@ -7,6 +7,7 @@ import {Response} from "@angular/http";
 
 @Component({
     templateUrl: 'news-edit.template.html',
+    styleUrls: ["./news-edit.style.css"],
     selector: "news-edit"
 })
 export class NewsEditComponent implements OnInit {
@@ -19,7 +20,6 @@ export class NewsEditComponent implements OnInit {
     private loading: boolean = true;
     private news: News = new News("", "", "");
     private errorMessage: string = "";
-    private successMessage: string = "";
 
     ngOnInit() {
         let newsId: number;
@@ -54,7 +54,6 @@ export class NewsEditComponent implements OnInit {
             data => {
                 console.log("Successfully save/update: " + JSON.stringify(data));
                 this.loading = false;
-                this.successMessage = "Successfully update!";
                 this.router.navigate(["/"]);
             },
             error => this.logError(error)
@@ -77,6 +76,7 @@ export class NewsEditComponent implements OnInit {
         this.loading = true;
         this.newsService.delete(id).subscribe(
             (response: Response) => {
+                confirm("Delete news?");
                 console.log("Deleting response status: " + response.status);
                 this.loading = false;
                 this.router.navigate(["/"]);

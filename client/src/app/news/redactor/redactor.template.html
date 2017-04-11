@@ -2,7 +2,7 @@
 
 <div *ngIf="loading">Loading...</div>
 <h2 *ngIf="!loading && newsList.length < 1">Nothing to show </h2>
-<div *ngFor="let news of newsList">
+<div id="newsList" *ngFor="let news of newsList">
     <h2>{{ news.title }}</h2>
     {{ news.description }} <br>
     <a [routerLink]="['/newsDetails', news.id]">Details</a>

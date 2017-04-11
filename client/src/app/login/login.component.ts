@@ -1,11 +1,11 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../security/authentication.service";
-import {CurrentUserService} from "../news/service/current-user.service";
 import {CanViewService} from "../news/service/can-view.service";
 
 @Component({
-    templateUrl: "./login.template.html"
+    templateUrl: "./login.template.html",
+    styleUrls: ["./login.style.css"]
 })
 export class LoginComponent {
 

@@ -6,8 +6,9 @@ import User from "../../model/user.model";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
-    selector: 'edit-user',
-    templateUrl: 'user-edit.template.html'
+    selector: "edit-user",
+    templateUrl: "user-edit.template.html",
+    styleUrls: ["./user-edit.style.css"]
 })
 export class UserEditComponent implements OnInit {
 
@@ -60,8 +61,8 @@ export class UserEditComponent implements OnInit {
 
     logError(err) {
         this.loading = false;
-        console.error('Error: ' + err);
-        this.errorMessage = 'Error occurred =( ';
+        console.error("Error: " + err);
+        this.errorMessage = "Error occurred =( ";
     }
 
 }

@@ -10,7 +10,8 @@ import {UserEditComponent} from "./news/admin/user-edit/user-edit.component";
 import {NewsFutureComponent} from "./news/news-future/news-future.component";
 
 export const APP_ROUTS = [
-    {path: '', component: HomeComponent},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'admin', component: AdminComponent},
     {path: 'redactor', component: RedactorComponent},
@@ -20,5 +21,4 @@ export const APP_ROUTS = [
     {path: 'userCreate', component: UserCreateComponent},
     {path: 'userEdit/:username', component: UserEditComponent},
     {path: 'newsFuture', component: NewsFutureComponent}
-
 ];

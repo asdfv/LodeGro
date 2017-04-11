@@ -3,47 +3,42 @@
 <div class="container">
     <form #newsForm="ngForm">
 
-        <label>
-            Title <br>
-            <textarea id="title" name="title" [(ngModel)]="news.title" required
-                      minlength="4"> {{ news.title }} </textarea>
-        </label>
+        <label for="title">Title </label><br>
+        <textarea rows="5" cols="101" id="title" name="title" [(ngModel)]="news.title" required
+                  minlength="4"> {{ news.title }} </textarea>
         <br>
         <br>
-        <label>Description
-            <br>
-            <textarea id="description" name="description"
-                      [(ngModel)]="news.description"> {{ news.description }} </textarea>
-        </label>
+        <label for="description">Description</label>
+        <br>
+        <textarea rows="10" cols="101" id="description" name="description"
+                  [(ngModel)]="news.description"> {{ news.description }} </textarea>
+
         <br>
         <br>
-        <label>
-            Text
-            <br>
-            <textarea id="content" name="text" [(ngModel)]="news.text" required
-                      minlength="4"> {{ news.text }} </textarea>
-        </label>
+        <label for="content">Text</label>
+        <br>
+        <textarea rows="15" cols="101" id="content" name="text" [(ngModel)]="news.text" required
+                  minlength="4"> {{ news.text }} </textarea>
+
         <br>
         <br>
-        <label>
-            Date to publish<br>
-            <material-datepicker [(date)]="news.startDate"></material-datepicker>
-        </label>
+        <label>Date to publish </label><br>
+        <material-datepicker id="datepicker" [(date)]="news.startDate"></material-datepicker>
+
         <br>
         <br>
-        <label *ngIf="isRedactor()">
-            Approve
-            <input type="checkbox" id="approved" name="isApproved" [(ngModel)]="news.isApproved">
-        </label>
+        <div *ngIf="isRedactor()">
+            <label for="approved">Approve</label>
+            <input class="checkbox" type="checkbox" id="approved" name="isApproved" [(ngModel)]="news.isApproved">
+        </div>
         <br>
         <br>
-        <button type="submit" (click)="updateOrSave()" [disabled]="loading">Save</button>
+        <button id="save_button" class="button button_green" type="submit" (click)="updateOrSave()" [disabled]="loading">Save</button>
+        <button class="button button_red" *ngIf="news.id" (click)="delete(news.id)" [disabled]="loading">Delete</button>
+        <button class="button button_blue" [routerLink]="['/']">Back</button>
         <img *ngIf="loading"
              src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
     </form>
-    <button *ngIf="news.id" (click)="delete(news.id)" [disabled]="loading">Delete</button>
-    <button [routerLink]="['/']">Back</button>
 
-    <div> {{ errorMessage }}</div>
-    <div> {{ successMessage }}</div>
+    <div class="error_message"> {{ errorMessage }}</div>
 </div>

@@ -11,5 +11,5 @@
             Опубликовано: {{ news.startDate | date:'yyyy-MM-dd'}}
         </p>
     </div>
-    <button *ngIf="canEdit()" [routerLink]="['/newsEdit', news.id]">Edit</button>
+    <button class="button button_blue" *ngIf="canEdit()" [routerLink]="['/newsEdit', news.id]">Edit</button>
 </div>

@@ -6,7 +6,7 @@ import {CurrentUserService} from "./news/service/current-user.service";
 @Component({
     selector: "my-app",
     templateUrl: "./app.component.html",
-    styleUrls: ["./app.template.css"]
+    styleUrls: ["./app.style.css"]
 })
 export class AppComponent {
 
@@ -38,7 +38,7 @@ export class AppComponent {
 
     getCurrentUsername(): string {
         let currentUser = this.currentUserService.get().username;
-        return currentUser == "anon" ? "" : " - " + currentUser;
+        return currentUser == "anon" ? "" : currentUser;
     }
 
 }
