@@ -5,7 +5,7 @@ apply plugin: 'idea'
 task buildWeb(type: Exec) {
     description = 'Build webapp with webpack and npm.'
     workingDir = file('client/')
-    commandLine = ['cmd', '/c', 'npm run build']
+    commandLine = ['cmd', '/c', 'npm run build:prod']
 }
 
 task npmInstall(type: Exec) {

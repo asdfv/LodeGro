@@ -23,13 +23,10 @@ public class TokenAuthenticationService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(TokenAuthenticationService.class);
 
-//    @Value("${security.expiration}")
     private long EXPIRATION_TIME_DAYS = 10;
     private final long EXPIRATION_TIME = 1000 * 60 * 60 * 24 * EXPIRATION_TIME_DAYS;
 
-//    @Value(value = "${security.secret}")
-//    private String SECRET;
-    private String SECRET = "678a613257189329f0020d62e0e25c8d56e6";
+    private static String SECRET = "678a613257189329f0020d62e0e25c8d56e6";
 
     private static final String TOKEN_PREFIX = "Bearer";
     private static final String TOKEN_HEADER = "Authorization";
