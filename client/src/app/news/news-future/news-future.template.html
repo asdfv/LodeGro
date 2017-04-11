@@ -8,7 +8,6 @@
     <h3>{{ news.description }} </h3>
     <div class="created_on">
         <p>
-            <span *ngIf="news.lastEdit">Последнее редактирование: {{news.lastEdit | date:'HH:mm / yyyy-MM-dd'}}</span> <br>
             Автор: {{news.createdBy}} <br>
             Создано: {{ news.createdAt | date:'yyyy-MM-dd'}} <br>
             Дата для публикации: {{ news.startDate | date:'yyyy-MM-dd'}}

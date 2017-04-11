@@ -5,6 +5,13 @@
 <div id="newsList" *ngFor="let news of newsList">
     <h2>{{ news.title }}</h2>
     {{ news.description }} <br>
+    <div class="created_on">
+        <p>
+            Автор: {{news.createdBy}} <br>
+            Создано: {{ news.createdAt | date:'yyyy-MM-dd'}} <br>
+            Дата для публикации: {{ news.startDate | date:'yyyy-MM-dd'}}
+        </p>
+    </div>
     <a [routerLink]="['/newsDetails', news.id]">Details</a>
     <hr>
 </div>

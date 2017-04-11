@@ -2,18 +2,19 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'idea'
 
-task buildWeb(type:Exec) {
-	description = 'Build webapp with webpack and npm.'
-  	workingDir = file('client/')
-  	commandLine = ['cmd', '/c', 'npm run build']
+task buildWeb(type: Exec) {
+    description = 'Build webapp with webpack and npm.'
+    workingDir = file('client/')
+    commandLine = ['cmd', '/c', 'npm run build']
 }
 
-task npmInstall(type:Exec) {
+task npmInstall(type: Exec) {
     description = 'Instal npm dependensies.'
     workingDir = file('client/')
     commandLine = ['cmd', '/c', 'npm install']
 }
-task deploy(type:Exec) {
+
+task deploy(type: Exec) {
     description = 'Deploy webapp and run Tomcat using deploy.bat.'
     commandLine = ['cmd', '/c', 'deploy.cmd']
 }
@@ -23,9 +24,11 @@ war {
     from('/client') {
         include 'index.html'
         include 'bundles/'
+        include 'assets/'
     }
 }
 
+buildWeb.dependsOn npmInstall
 war.dependsOn buildWeb
 deploy.dependsOn build
 
@@ -36,14 +39,14 @@ repositories {
 }
 
 dependencies {
-	compile 'org.springframework:spring-webmvc:4.3.5.RELEASE'
-	compile 'org.springframework:spring-orm:4.3.5.RELEASE'
-	compile 'org.springframework.data:spring-data-jpa:1.3.0.RELEASE'
-	compile 'org.hibernate:hibernate-core:5.2.6.Final'
-	compile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
-	compile 'org.postgresql:postgresql:9.4.1212.jre7'
+    compile 'org.springframework:spring-webmvc:4.3.5.RELEASE'
+    compile 'org.springframework:spring-orm:4.3.5.RELEASE'
+    compile 'org.springframework.data:spring-data-jpa:1.3.0.RELEASE'
+    compile 'org.hibernate:hibernate-core:5.2.6.Final'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
+    compile 'org.postgresql:postgresql:9.4.1212.jre7'
     compile 'ch.qos.logback:logback-classic:1.1.9'
-	compile 'org.codehaus.groovy:groovy-all:2.4.7'
+    compile 'org.codehaus.groovy:groovy-all:2.4.7'
     compile 'javax.servlet:javax.servlet-api:3.0.1'
     compile 'org.springframework.security:spring-security-core:4.2.2.RELEASE'
     compile 'org.springframework.security:spring-security-web:4.2.2.RELEASE'

@@ -12,6 +12,6 @@ exports.config = {
     onPrepare: function () {
         var globals = require('protractor');
         var browser = globals.browser;
-        browser.driver.manage().window().setSize(800, 600);
+        browser.driver.manage().window().setSize(800, 800);
     }
 };

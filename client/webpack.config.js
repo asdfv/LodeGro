@@ -27,8 +27,7 @@ module.exports = {
     devServer: {
         port: 3000,
         proxy: {
-            '/api/*': 'http://localhost:8080/lodegro/',
-            '/login': 'http://localhost:8080/lodegro/'
+            '/**': 'http://localhost:8080/lodegro/'
         }
     },
     devtool: "source-map",

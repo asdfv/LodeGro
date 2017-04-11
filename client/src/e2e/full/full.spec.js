@@ -54,28 +54,32 @@ describe('login page', () => {
     //     };
     // });
 
-    it('Description of the test', function(){
-        browser.get('http://localhost:3000/#/redactor');
-
-        let list = element.all(element.all(by.id('news-list')));
-
-        list.count().then(function(amount) {
-
-                    browser.get('http://localhost:3000/#/author');
-
-                    let title = element(by.id('title'));
-                    let description = element(by.id('description'));
-                    let content = element(by.id('content'));
-                    let saveButton = element(by.id('save_button'));
-
-                    title.sendKeys("Test news title");
-                    description.sendKeys("Test news description");
-                    content.sendKeys("Test news content");
-                    saveButton.click();
-
-            let secondAmount = element.all(by.repeater('list in listData.myLists')).count();
-
-            expect(secondAmount).toEqual(amount + 1);
-        });
-    });
+    // it('Description of the test', function(){
+    //     browser.get('http://localhost:3000/#/redactor');
+    //
+    //     let list = element.all(element.all(by.id('news-list')));
+    //
+    //     list.count().then(function(amount) {
+    //
+    //                 browser.get('http://localhost:3000/#/author');
+    //
+    //                 let title = element(by.id('title'));
+    //                 let description = element(by.id('description'));
+    //                 let content = element(by.id('content'));
+    //                 let saveButton = element(by.id('save_button'));
+    //
+    //                 title.sendKeys("Test news title");
+    //                 description.sendKeys("Test news description");
+    //                 content.sendKeys("Test news content");
+    //                 saveButton.click();
+    //
+    //         let secondList = element.all(by.repeater('list in listData.myLists'));
+    //         secondList.count().then(secondAmount => {
+    //             "use strict";
+    //             expect(secondAmount).toEqual(amount + 1);
+    //
+    //         });
+    //
+    //     });
+    // });
 });
