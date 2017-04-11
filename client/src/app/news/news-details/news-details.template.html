@@ -3,7 +3,7 @@
 <div *ngIf="!loading">
     <h2>{{news.title}}</h2>
     <h3>{{news.description}}</h3>
-    <div>{{news.text}}</div>
+    <div class="full_text" style="white-space: pre-line">{{news.text}}</div>
     <div class="created_on">
         <p>
             <span *ngIf="news.lastEdit">Последнее редактирование: {{news.lastEdit | date:'HH:mm / yyyy-MM-dd'}}</span> <br>

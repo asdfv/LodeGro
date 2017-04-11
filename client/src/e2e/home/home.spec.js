@@ -4,6 +4,7 @@ describe('Home page test', () => {
         browser.get('http://localhost:3000/#/');
 
         let newsList = element.all(by.id('news-list'));
-        expect(newsList.count()).toEqual(0);
+        expect(newsList.count()).toEqual(2);
     });
 });
+

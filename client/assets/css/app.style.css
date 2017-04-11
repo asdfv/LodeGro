@@ -8,6 +8,9 @@ body, html {
     font-family: sans-serif, 'trebuchet ms', 'lucida grande', 'lucida sans unicode', arial, helvetica, sans-serif;
     font-size: 16px;
 }
+.full_text {
+    white-space: pre-line;
+}
 
 .created_on {
     font: normal 75% 'century gothic', arial, sans-serif;

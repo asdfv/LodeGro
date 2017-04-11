@@ -10,11 +10,16 @@ Server side technologies stack:
 - JWT
 - Hibernate
 
-Client: Angular 2
+Client: 
+- Angular 2
 
 Build tools: 
 - Gradle
 - Webpack
+
+Other:
+- Tomcat 9
+- PostrgeSQL
 
 ***
 
@@ -43,9 +48,8 @@ Build project
 1. Download the project from this repository
 
 	* In file **src\main\resources\application.properties** set the username and password for Postgress
-	* In the console, navigate to the folder with the project and run the command `gradle build`
 	* Change in the file **deploy.cmd** variable *tomcat* to Tomcat installation folder.
-	* Run deploy.cmd
+	* In the console, navigate to the folder with the project and run the command `gradle deploy`
 	* Wait for the Tomcat start and go to the URL [http://localhost:8080/lodegro/](http://localhost:8080/lodegro/)
 
 
@@ -66,14 +70,13 @@ Build project
 3. Скачайте и установите PostgreSQL по [ссылке](https://www.postgresql.org/download/windows/)
  
   * Войдите в стандартную базу "postgres" используя заданный при установке логин и пароль.
-  * Используйте SQL-запрос из файла **conf/dump.sql** что бы сгенерировать тестовую базу данных.
+  * Используйте SQL-запрос из файла **conf/dump.sql** что бы сгенерировать тестовую схему базы данных.
  
 Сборка проекта
 =========================================
 1. Скачайте проект с этого репозитория
 
   * В файле **src\main\resources\application.properties** установите *username* и *password* для Postgress
-  * В консоли перейдите в папку с проектом и выполните команду `gradle build`
   * Измените в файле deploy.cmd переменную *tomcat*, на папку, в которую установили Tomcat
-  * Запустите deploy.cmd
+  * В консоли перейдите в папку с проектом и выполните команду `gradle deploy` 
   * Дождитесь старта Tomcat и в браузере перейдите по ссылке [http://localhost:8080/lodegro/](http://localhost:8080/lodegro/)

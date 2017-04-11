@@ -20,4 +20,3 @@
 *.log
 !/client/src/e2e/home/home.spec.js
 !/client/src/e2e/login/login.spec.js
-!/client/src/e2e/full/full.spec.js

@@ -35,7 +35,6 @@ public class NewsServiceTest {
     private static News news = new News();
     private static final Date TODAY = new Date();
 
-
     @Autowired
     private NewsService newsService;
 
@@ -63,8 +62,6 @@ public class NewsServiceTest {
     public void addToApprovedTest() {
         Iterable<News> newsListBefore = newsService.findApprovedAndStarted();
         int sizeBefore = getSize(newsListBefore);
-        System.out.println("Size before: " + sizeBefore);
-
 
         news.startDate = TODAY;
         news.isApproved = true;
@@ -72,7 +69,6 @@ public class NewsServiceTest {
 
         Iterable<News> newsListAfter = newsService.findApprovedAndStarted();
         int sizeAfter = getSize(newsListAfter);
-        System.out.println("Size after: " + sizeAfter);
 
         assertTrue(null, sizeAfter == sizeBefore + 1);
 

@@ -4,20 +4,20 @@
     <form #newsForm="ngForm">
 
         <label for="title">Title </label><br>
-        <textarea rows="5" cols="101" id="title" name="title" [(ngModel)]="news.title" required
+        <textarea rows="2" cols="92" id="title" name="title" [(ngModel)]="news.title" required
                   minlength="4"> {{ news.title }} </textarea>
         <br>
         <br>
         <label for="description">Description</label>
         <br>
-        <textarea rows="10" cols="101" id="description" name="description"
+        <textarea rows="2" cols="92" id="description" name="description"
                   [(ngModel)]="news.description"> {{ news.description }} </textarea>
 
         <br>
         <br>
         <label for="content">Text</label>
         <br>
-        <textarea rows="15" cols="101" id="content" name="text" [(ngModel)]="news.text" required
+        <textarea rows="15" cols="92" id="content" name="text" [(ngModel)]="news.text" required
                   minlength="4"> {{ news.text }} </textarea>
 
         <br>
