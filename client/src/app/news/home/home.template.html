@@ -1,7 +1,7 @@
 <h1>News of Grodno branch of LODE</h1>
 
 <div *ngIf="loading">Loading...</div>
-<div *ngIf="newsList.length < 1 && !loading">List of news is empty</div>
+<div *ngIf="!loading && newsList.length < 1">List of news is empty</div>
 
 <div id="news-list" *ngFor="let news of newsList">
     <h2>{{ news.title }}</h2>
